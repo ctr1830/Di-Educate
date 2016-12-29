@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Di-Educate</string>
+
+    <string name="bnew_session">Iniciar Sesión</string>
+    <string name="bnew_account">Cuenta Nueva</string>
+    <string name="benviar">Iniciar Sesión</string>
+
+    <string name="username">Nombre de usuario:</string>
+    <string name="husername">Introduzca el nombre de usuario</string>
+    <string name="contrasena">Contraseña:</string>
+    <string name="hcontrasena">Introduzca la contraseña</string>
+
+    <string name="anewaccount">Cuenta Nueva</string>
+    <string name="alogin">Iniciar Sesión</string>
+    <string name="title_activity_menu">MenuActivity</string>
+</resources>
