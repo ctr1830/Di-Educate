@@ -12,5 +12,5 @@
 
     <string name="anewaccount">Cuenta Nueva</string>
     <string name="alogin">Iniciar Sesión</string>
-    <string name="title_activity_menu">MenuActivity</string>
+    <string name="amenu">Menú</string>
 </resources>
