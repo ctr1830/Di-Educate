@@ -3,12 +3,25 @@
 
     <string name="bnew_session">Iniciar Sesión</string>
     <string name="bnew_account">Cuenta Nueva</string>
-    <string name="benviar">Iniciar Sesión</string>
+    <string name="bstart">Iniciar Sesión</string>
+    <string name="bfoto">Sacar Foto</string>
+    <string name="bsend">Enviar</string>
 
-    <string name="username">Nombre de usuario:</string>
+    <string name="no_camera">Camara necesaria para ejecutar esta función</string>
+    <string name="no_app">Instale una aplicación que pueda usar la camara</string>
+    <string name="no_api">Esta versión de Android no soporta esta caracteristica</string>
+    <string name="campos">Introduzca los campos requeridos</string>
+
+    <string name="hobbys">Aficiones:</string>
+    <string name="age">*Edad:</string>
+    <string name="surname">*Apellidos:</string>
+    <string name="nombre">*Nombre:</string>
+    <string name="username">*Nombre de usuario:</string>
     <string name="husername">Introduzca el nombre de usuario</string>
-    <string name="contrasena">Contraseña:</string>
+    <string name="contrasena">*Contraseña:</string>
     <string name="hcontrasena">Introduzca la contraseña</string>
+    <string name="required">*Campos requeridos</string>
+    <string name="fill">Rellene los campos requeridos</string>
 
     <string name="anewaccount">Cuenta Nueva</string>
     <string name="alogin">Iniciar Sesión</string>
