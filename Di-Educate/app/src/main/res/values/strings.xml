@@ -6,6 +6,18 @@
     <string name="bstart">Iniciar Sesión</string>
     <string name="bfoto">Sacar Foto</string>
     <string name="bsend">Enviar</string>
+    <string name="bleoleo">Leo Leo</string>
+    <string name="bjuego">Juego con las palabras</string>
+    <string name="bescucho">Esucucho mi voz</string>
+    <string name="bleoleo1">Leo Leo 1</string>
+    <string name="bjuego1">Juego con las palabras 1</string>
+    <string name="bescucho1">Esucucho mi voz 1</string>
+    <string name="bleoleo2">Leo Leo 2</string>
+    <string name="bjuego2">Juego con las palabras 2</string>
+    <string name="bescucho2">Esucucho mi voz 2</string>
+    <string name="bleoleo3">Leo Leo 3</string>
+    <string name="bescucho3">Esucucho mi voz 3</string>
+
 
     <string name="no_camera">Camara necesaria para ejecutar esta función</string>
     <string name="no_app">Instale una aplicación que pueda usar la camara</string>

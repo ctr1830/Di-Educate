@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sub_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="eus.ehu.tta.intel.di_educate.SubMenuActivity"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/escaleras"
+        android:id="@+id/imageView2" />
+
+    <Button
+        android:text="@string/bleoleo1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/leoleo1"
+        android:onClick="leoleo1"/>
+
+    <Button
+        android:text="@string/bleoleo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/leoleo2"
+        android:onClick="leoleo2"/>
+
+    <Button
+        android:text="@string/bleoleo3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/leoleo3"
+        android:onClick="leoleo3"/>
+
+    <Button
+        android:text="@string/bjuego1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/juego1" />
+
+    <Button
+        android:text="@string/bjuego2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/juego2" />
+    <Button
+        android:text="@string/bescucho1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/escucho1" />
+
+    <Button
+        android:text="@string/bescucho2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/escucho2" />
+
+    <Button
+        android:text="@string/bescucho3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/escucho3" />
+    <Button
+        android:text="@string/bescucho3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seguimiento1" />
+    <Button
+        android:text="@string/bescucho3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seguimiento2" />
+    <Button
+        android:text="@string/bescucho3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seguimiento3" />
+</LinearLayout>

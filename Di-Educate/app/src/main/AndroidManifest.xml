@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eus.ehu.tta.intel.di_educate">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <uses-feature android:name="android.hardware.Camera"
-        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.Camera"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -25,10 +27,13 @@
         <activity
             android:name=".Login"
             android:label="@string/alogin" />
-        <activity android:name=".NewAccount"
-            android:label="@string/anewaccount"/>
-        <activity android:name=".MenuActivity"
-            android:label="@string/amenu"></activity>
+        <activity
+            android:name=".NewAccount"
+            android:label="@string/anewaccount" />
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/amenu" />
+        <activity android:name=".SubMenuActivity"></activity>
     </application>
 
 </manifest>
