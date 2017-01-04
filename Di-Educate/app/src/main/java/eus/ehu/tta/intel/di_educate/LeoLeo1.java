@@ -92,8 +92,10 @@ public class LeoLeo1 extends AppCompatActivity {
              boton2=null;
              //Conseguido
              Intent intent= new Intent(this,CorrectoActivity.class);
-             intent.putExtra(CorrectoActivity.EXTRA_OPCION,"leoleo");
-             intent.putExtra(CorrectoActivity.EXTRA_TRUE,"correcto");
+             Bundle extras=new Bundle();
+             extras.putString("opcion","leoleo");
+             extras.putString("true","correcto");
+             intent.putExtras(extras);
              startActivity(intent);
          }
         else{
@@ -101,8 +103,10 @@ public class LeoLeo1 extends AppCompatActivity {
              if(fail==3){
                  //Añadir audio
                  Intent intent= new Intent(this,CorrectoActivity.class);
-                 intent.putExtra(CorrectoActivity.EXTRA_OPCION,"leoleo");
-                 intent.putExtra(CorrectoActivity.EXTRA_TRUE,"incorrecto");
+                 Bundle extras=new Bundle();
+                 extras.putString("opcion","leoleo");
+                 extras.putString("true","incorrecto");
+                 intent.putExtras(extras);
                  startActivity(intent);
 
              }

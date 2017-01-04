@@ -11,48 +11,54 @@ import android.widget.ImageView;
 
 public class CorrectoActivity extends AppCompatActivity {
 
-    public static String EXTRA_OPCION = "";
-    public static String EXTRA_TRUE = "";
+    private static String opcion;
+    private static String correcto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_correcto);
 
-        Intent intent = getIntent();
-        String opcion = intent.getStringExtra(EXTRA_OPCION);
-        String correcto = intent.getStringExtra(EXTRA_TRUE);
+        //Intent intent = getIntent();
+        Bundle extras=getIntent().getExtras();
+
+        opcion = extras.getString("opcion");
+        Log.d("opcion",opcion);
+        correcto = extras.getString("true");
+        Log.d("true/false",correcto);
 
         if (correcto.equals("correcto")) {
-            PlayGifView pGif = (PlayGifView) findViewById(R.id.correcto);
-            pGif.setImageResource(R.drawable.correct);
-            findViewById(R.id.volvercorrecto);
+            findViewById(R.id.volvercorrecto).setVisibility(View.VISIBLE);
+            //PlayGifView pGif = (PlayGifView) findViewById(R.id.correcto);
+            //pGif.setImageResource(R.drawable.correct);
 
         } else {
-            PlayGifView pGif = (PlayGifView) findViewById(R.id.correcto);
+            findViewById(R.id.volvercorrecto).setVisibility(View.VISIBLE);
+            //PlayGifView pGif = (PlayGifView) findViewById(R.id.correcto);
             findViewById(R.id.tayuda).setVisibility(View.VISIBLE);
-            pGif.setImageResource(R.drawable.ayuda);
+            //pGif.setImageResource(R.drawable.ayuda);
         }
 
     }
 
     public void volverCorrecto(View v){
 
-        if(EXTRA_OPCION.equals("leoleo")) {
-            Intent mainIntent1 = new Intent(CorrectoActivity.this, SubMenuActivity.class);
+
+        if(opcion.equals("leoleo")) {
+            Intent mainIntent1 = new Intent(this, SubMenuActivity.class);
             mainIntent1.putExtra(SubMenuActivity.EXTRA_OPTION, "leoleo");
             startActivity(mainIntent1);
         }
-        else if(EXTRA_OPCION.equals("juego")) {
-            Intent mainIntent2 = new Intent(CorrectoActivity.this, SubMenuActivity.class);
+        else if(opcion.equals("juego")) {
+            Intent mainIntent2 = new Intent(this, SubMenuActivity.class);
             mainIntent2.putExtra(SubMenuActivity.EXTRA_OPTION, "juego");
             startActivity(mainIntent2);
         }
-        else if(EXTRA_OPCION.equals("escucho")) {
+        else if(opcion.equals("escucho")) {
             Intent mainIntent3 = new Intent(CorrectoActivity.this, SubMenuActivity.class);
             mainIntent3.putExtra(SubMenuActivity.EXTRA_OPTION, "escucho");
             startActivity(mainIntent3);
         }
     }
-    
+
 }
