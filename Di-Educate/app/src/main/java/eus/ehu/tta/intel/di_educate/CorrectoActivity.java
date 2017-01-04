@@ -29,14 +29,14 @@ public class CorrectoActivity extends AppCompatActivity {
 
         if (correcto.equals("correcto")) {
             findViewById(R.id.volvercorrecto).setVisibility(View.VISIBLE);
-            //PlayGifView pGif = (PlayGifView) findViewById(R.id.correcto);
-            //pGif.setImageResource(R.drawable.correct);
+            PlayGifView pGif = (PlayGifView) findViewById(R.id.correcto);
+            pGif.setImageResource(R.drawable.correct);
 
         } else {
             findViewById(R.id.volvercorrecto).setVisibility(View.VISIBLE);
-            //PlayGifView pGif = (PlayGifView) findViewById(R.id.correcto);
+            PlayGifView pGif = (PlayGifView) findViewById(R.id.correcto);
             findViewById(R.id.tayuda).setVisibility(View.VISIBLE);
-            //pGif.setImageResource(R.drawable.ayuda);
+            pGif.setImageResource(R.drawable.ayuda);
         }
 
     }

@@ -13,6 +13,7 @@ public class LeoLeo1 extends AppCompatActivity {
 
     private static String boton1;
     private static String boton2;
+    private static int fail=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,6 @@ public class LeoLeo1 extends AppCompatActivity {
 
     public void comprobar(View v){
 
-        int fail=0;
         Log.d("boton1",boton1);
         Log.d("boton2",boton2);
 
@@ -100,8 +100,10 @@ public class LeoLeo1 extends AppCompatActivity {
          }
         else{
              fail++;
+             Log.d("AQUI","ENTRE");
              if(fail==3){
                  //Añadir audio
+                 Log.d("AQUI","ENTRE tb");
                  Intent intent= new Intent(this,CorrectoActivity.class);
                  Bundle extras=new Bundle();
                  extras.putString("opcion","leoleo");
