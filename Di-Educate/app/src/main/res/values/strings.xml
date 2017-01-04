@@ -34,6 +34,7 @@
     <string name="cleoleo2">Completaste Leo Leo 2</string>
     <string name="cleoleo3">Completaste Leo Leo 3</string>
     <string name="ayuda">Pide ayuda a quien tengas cerca</string>
+    <string name="secuencia">Crea la secuencia con la primera y última sílaba de las palabras que aparecen a continuación</string>
 
     <string name="hobbys">Aficiones:</string>
     <string name="age">*Edad:</string>
