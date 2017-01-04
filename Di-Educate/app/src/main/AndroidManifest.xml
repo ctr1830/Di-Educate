@@ -33,7 +33,19 @@
         <activity
             android:name=".MenuActivity"
             android:label="@string/amenu" />
-        <activity android:name=".SubMenuActivity"></activity>
+        <activity android:name=".SubMenuActivity" />
+        <activity
+            android:name=".LeoLeo1"
+            android:label="@string/bleoleo1" />
+        <activity
+            android:name=".LeoLeo2"
+            android:label="@string/bleoleo2" />
+        <activity
+            android:name=".LeoLeo3"
+            android:label="@string/bleoleo3" />
+        <activity
+            android:name=".CorrectoActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

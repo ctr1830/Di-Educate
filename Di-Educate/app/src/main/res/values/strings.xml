@@ -10,6 +10,13 @@
     <string name="bjuego">Juego con las palabras</string>
     <string name="bescucho">Esucucho mi voz</string>
     <string name="bleoleo1">Leo Leo 1</string>
+    <string name="bcomprobar">comprobar</string>
+    <string name="bseguimiento">seguimiento</string>
+    <string name="bp">p</string>
+    <string name="bd">d</string>
+    <string name="bb">b</string>
+    <string name="bvolver">volver</string>
+
     <string name="bjuego1">Juego con las palabras 1</string>
     <string name="bescucho1">Esucucho mi voz 1</string>
     <string name="bleoleo2">Leo Leo 2</string>
@@ -23,6 +30,10 @@
     <string name="no_app">Instale una aplicación que pueda usar la camara</string>
     <string name="no_api">Esta versión de Android no soporta esta caracteristica</string>
     <string name="campos">Introduzca los campos requeridos</string>
+    <string name="cleoleo1">Completaste Leo Leo 1</string>
+    <string name="cleoleo2">Completaste Leo Leo 2</string>
+    <string name="cleoleo3">Completaste Leo Leo 3</string>
+    <string name="ayuda">Pide ayuda a quien tengas cerca</string>
 
     <string name="hobbys">Aficiones:</string>
     <string name="age">*Edad:</string>

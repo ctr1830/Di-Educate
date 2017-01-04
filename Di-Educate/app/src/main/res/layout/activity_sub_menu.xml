@@ -68,17 +68,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/escucho3" />
     <Button
-        android:text="@string/bescucho3"
+        android:text="@string/bseguimiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/seguimiento1" />
     <Button
-        android:text="@string/bescucho3"
+        android:text="@string/bseguimiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/seguimiento2" />
     <Button
-        android:text="@string/bescucho3"
+        android:text="@string/bseguimiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/seguimiento3" />
