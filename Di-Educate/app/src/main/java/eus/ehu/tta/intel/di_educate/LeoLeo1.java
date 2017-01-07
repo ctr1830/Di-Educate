@@ -44,6 +44,12 @@ public class LeoLeo1 extends AppCompatActivity {
 
     public void comprobar(View v){
 
+        Button button1=(Button)this.findViewById(R.id.bl1);
+        Button button2=(Button)this.findViewById(R.id.bl2);
+        Button button3=(Button)this.findViewById(R.id.bl3);
+        Button button4=(Button)this.findViewById(R.id.bl4);
+        ImageView image1=(ImageView)findViewById(R.id.foto1);
+        ImageView image2=(ImageView)findViewById(R.id.foto2);
         Log.d("boton1",boton1);
         Log.d("boton2",boton2);
 
@@ -52,18 +58,13 @@ public class LeoLeo1 extends AppCompatActivity {
             boton1=null;
             boton2=null;
              //Cargar nuevas imagenes
-            ImageView image1=(ImageView)findViewById(R.id.foto1);
+
              image1.setImageResource(R.drawable.avanza);
-             ImageView image2=(ImageView)findViewById(R.id.foto2);
              image2.setImageResource(R.drawable.avanza);
 
-            Button button1=(Button)this.findViewById(R.id.bl1);
             button1.setText("d");
-            Button button2=(Button)this.findViewById(R.id.bl2);
             button2.setText("b");
-            Button button3=(Button)this.findViewById(R.id.bl3);
             button3.setText("d");
-            Button button4=(Button)this.findViewById(R.id.bl4);
             button4.setText("b");
         }
         else if((boton1.equals("b"))&&(boton2.equals("d"))){
@@ -71,18 +72,12 @@ public class LeoLeo1 extends AppCompatActivity {
              boton1=null;
              boton2=null;
              //Cargar nuevas imagenes
-             ImageView image1=(ImageView)findViewById(R.id.foto1);
              image1.setImageResource(R.drawable.audio);
-             ImageView image2=(ImageView)findViewById(R.id.foto2);
              image2.setImageResource(R.drawable.audio);
 
-             Button button1=(Button)this.findViewById(R.id.bl1);
              button1.setText("p");
-             Button button2=(Button)this.findViewById(R.id.bl2);
              button2.setText("b");
-             Button button3=(Button)this.findViewById(R.id.bl3);
              button3.setText("p");
-             Button button4=(Button)this.findViewById(R.id.bl4);
              button4.setText("b");
 
          }

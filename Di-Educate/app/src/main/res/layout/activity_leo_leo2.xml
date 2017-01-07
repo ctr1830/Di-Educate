@@ -12,39 +12,43 @@
     tools:context="eus.ehu.tta.intel.di_educate.LeoLeo2">
 
     <Button
-        android:text="Button"
+        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageButton"
         android:layout_centerHorizontal="true"
-        android:id="@+id/button8" />
+        android:id="@+id/bl21"
+        android:onClick="respuesta"/>
 
     <Button
-        android:text="Button"
+        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button8"
-        android:layout_alignRight="@+id/button8"
-        android:layout_alignEnd="@+id/button8"
-        android:id="@+id/button9" />
+        android:layout_below="@+id/bl21"
+        android:layout_alignRight="@+id/bl21"
+        android:layout_alignEnd="@+id/bl21"
+        android:id="@+id/bl22"
+        android:onClick="respuesta"/>
 
     <Button
-        android:text="Button"
+        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button9"
-        android:layout_alignLeft="@+id/button9"
-        android:layout_alignStart="@+id/button9"
-        android:id="@+id/button10" />
+        android:layout_below="@+id/bl22"
+        android:layout_alignLeft="@+id/bl22"
+        android:layout_alignStart="@+id/bl22"
+        android:id="@+id/bl23"
+        android:onClick="respuesta"/>
 
     <Button
-        android:text="Button"
+        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button10"
-        android:layout_alignRight="@+id/button10"
-        android:layout_alignEnd="@+id/button10"
-        android:id="@+id/button11" />
+        android:layout_below="@+id/bl23"
+        android:layout_alignRight="@+id/bl23"
+        android:layout_alignEnd="@+id/bl23"
+        android:id="@+id/bl24"
+        android:onClick="respuesta"/>
 
     <ImageButton
         android:layout_width="180dp"
@@ -52,7 +56,8 @@
         app:srcCompat="@drawable/audio"
         android:id="@+id/imageButton"
         android:layout_below="@+id/button12"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="audio"/>
 
     <Button
         android:text="@string/bcomprobar"
@@ -60,5 +65,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/button12"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="comprobar2"/>
 </RelativeLayout>
