@@ -46,6 +46,11 @@
         <activity
             android:name=".CorrectoActivity"
             android:label="@string/app_name" />
+        <activity android:name=".Juego1" />
+        <activity android:name=".Juego2" />
+        <activity android:name=".Escucho1" />
+        <activity android:name=".Escucho2" />
+        <activity android:name=".Escucho3"></activity>
     </application>
 
 </manifest>

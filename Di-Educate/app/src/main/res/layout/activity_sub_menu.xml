@@ -43,30 +43,35 @@
         android:text="@string/bjuego1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/juego1" />
+        android:id="@+id/juego1"
+        android:onClick="juego1"/>
 
     <Button
         android:text="@string/bjuego2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/juego2" />
+        android:id="@+id/juego2"
+        android:onClick="juego2"/>
     <Button
         android:text="@string/bescucho1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/escucho1" />
+        android:id="@+id/escucho1"
+        android:onClick="escucho1"/>
 
     <Button
         android:text="@string/bescucho2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/escucho2" />
+        android:id="@+id/escucho2"
+        android:onClick="escucho2"/>
 
     <Button
         android:text="@string/bescucho3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/escucho3" />
+        android:id="@+id/escucho3"
+        android:onClick="escucho3"/>
     <Button
         android:text="@string/bseguimiento"
         android:layout_width="match_parent"

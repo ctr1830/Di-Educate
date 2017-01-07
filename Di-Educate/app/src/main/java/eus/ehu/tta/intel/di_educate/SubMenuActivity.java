@@ -5,6 +5,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -101,6 +102,26 @@ public class SubMenuActivity extends AppCompatActivity {
     }
     public void leoleo3(View v){
         Intent intent= new Intent(this,LeoLeo3.class);
+        startActivity(intent);
+    }
+    public void juego1(View v){
+        Intent intent= new Intent(this,Juego1.class);
+        startActivity(intent);
+    }
+    public void juego2(View v){
+        Intent intent= new Intent(this,Juego2.class);
+        startActivity(intent);
+    }
+    public void escucho1(View v){
+        Intent intent= new Intent(this,Escucho1.class);
+        startActivity(intent);
+    }
+    public void escucho2(View v){
+        Intent intent= new Intent(this,Escucho2.class);
+        startActivity(intent);
+    }
+    public void escucho3(View v){
+        Intent intent= new Intent(this,Escucho3.class);
         startActivity(intent);
     }
 /*

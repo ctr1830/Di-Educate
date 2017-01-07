@@ -47,10 +47,9 @@ public class LeoLeo3 extends AppCompatActivity {
         Button button3=(Button)this.findViewById(R.id.bl33);
         TextView textLogin=(TextView)findViewById(R.id.palabra);
 
-        Log.d("ARRAY",array.get(0));
-        Log.d("ARRAY",array.get(1));
-        Log.d("ARRAY",array.get(2));
-
+        //Log.d("ARRAY",array.get(0));
+        //Log.d("ARRAY",array.get(1));
+        //Log.d("ARRAY",array.get(2));
 
         if((resp_correcta1[0].equals(array.get(0)))&&(resp_correcta1[1].equals(array.get(1)))&&(resp_correcta1[2].equals(array.get(2)))) {
             fail = 0;
@@ -90,7 +89,7 @@ public class LeoLeo3 extends AppCompatActivity {
             fail++;
             boton = null;
             array.clear();
-            
+
             //Log.d("AQUI","ENTRE");
             //Log.d("FAIL",Integer.toString(fail));
             if(fail==3) {
