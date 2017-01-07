@@ -10,7 +10,7 @@ import android.widget.Button;
 public class LeoLeo2 extends AppCompatActivity {
 
     private static String boton;
-    int fail=0;
+    private static int fail=0;
     private static String resp_correcta[]={"ratón","callar","abuelo"};
 
     @Override
@@ -81,8 +81,8 @@ public class LeoLeo2 extends AppCompatActivity {
         else{
             fail++;
 
-            Log.d("AQUI","ENTRE");
-            Log.d("FAIL",Integer.toString(fail));
+            //Log.d("AQUI","ENTRE");
+            //Log.d("FAIL",Integer.toString(fail));
             if(fail==3) {
                 //Añadir audio
                 Log.d("AQUI", "ENTRE tb");

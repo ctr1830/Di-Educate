@@ -25,35 +25,38 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView7"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView10"
+        android:id="@+id/palabra"
         android:textSize="18sp" />
 
     <Button
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView10"
+        android:layout_below="@+id/palabra"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="53dp"
-        android:id="@+id/button13" />
+        android:id="@+id/bl31"
+        android:onClick="respuesta"/>
 
     <Button
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button13"
-        android:layout_alignLeft="@+id/button13"
-        android:layout_alignStart="@+id/button13"
-        android:id="@+id/button14" />
+        android:layout_below="@+id/bl31"
+        android:layout_alignLeft="@+id/bl31"
+        android:layout_alignStart="@+id/bl31"
+        android:id="@+id/bl32"
+        android:onClick="respuesta"/>
 
     <Button
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button14"
-        android:layout_alignLeft="@+id/button14"
-        android:layout_alignStart="@+id/button14"
-        android:id="@+id/button15" />
+        android:layout_below="@+id/bl32"
+        android:layout_alignLeft="@+id/bl32"
+        android:layout_alignStart="@+id/bl32"
+        android:id="@+id/bl33"
+        android:onClick="respuesta"/>
 
     <Button
         android:text="@string/bcomprobar"
@@ -61,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:id="@+id/button16"
-        android:layout_below="@+id/button15"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/bl33"
+        android:layout_centerHorizontal="true"
+        android:onClick="comprobar3"/>
 </RelativeLayout>
