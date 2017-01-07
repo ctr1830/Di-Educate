@@ -18,7 +18,7 @@ public class Juego1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego1);
-        
+
         Button button1=(Button)this.findViewById(R.id.bj11);
         button1.setText("bo");
         Button button2=(Button)this.findViewById(R.id.bj12);

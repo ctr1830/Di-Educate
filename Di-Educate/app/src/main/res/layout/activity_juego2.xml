@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/pal"
+        android:id="@+id/j2pal"
         android:textSize="18sp" />
 
     <Button
@@ -26,27 +26,27 @@
         android:layout_below="@+id/pal"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="53dp"
-        android:id="@+id/bj11"
+        android:id="@+id/bj21"
         android:onClick="respuesta"/>
 
     <Button
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bj11"
-        android:layout_alignLeft="@+id/bj11"
-        android:layout_alignStart="@+id/bj11"
-        android:id="@+id/bj12"
+        android:layout_below="@+id/bj21"
+        android:layout_alignLeft="@+id/bj21"
+        android:layout_alignStart="@+id/bj21"
+        android:id="@+id/bj22"
         android:onClick="respuesta"/>
 
     <Button
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bj12"
-        android:layout_alignLeft="@+id/bj12"
-        android:layout_alignStart="@+id/bj12"
-        android:id="@+id/bj13"
+        android:layout_below="@+id/bj22"
+        android:layout_alignLeft="@+id/bj22"
+        android:layout_alignStart="@+id/bj22"
+        android:id="@+id/bj23"
         android:onClick="respuesta"/>
 
     <Button
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:id="@+id/button16"
-        android:layout_below="@+id/bj13"
+        android:layout_below="@+id/bj23"
         android:layout_centerHorizontal="true"
         android:onClick="comprobar"/>
 
