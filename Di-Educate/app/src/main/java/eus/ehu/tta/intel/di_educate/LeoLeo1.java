@@ -98,6 +98,7 @@ public class LeoLeo1 extends AppCompatActivity {
              Log.d("AQUI","ENTRE");
              if(fail==3){
                  //Añadir audio
+                 fail=0;
                  Log.d("AQUI","ENTRE tb");
                  Intent intent= new Intent(this,CorrectoActivity.class);
                  Bundle extras=new Bundle();

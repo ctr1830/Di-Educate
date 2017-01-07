@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_escucho3"
     android:layout_width="match_parent"
@@ -10,4 +11,45 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="eus.ehu.tta.intel.di_educate.Escucho3">
 
+    <ImageButton
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:srcCompat="@drawable/audio"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/audio" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/btn_star_big_on"
+        android:layout_weight="1"
+        android:id="@+id/boton1"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/audio"
+        android:layout_toStartOf="@+id/audio"
+        android:onClick="respuesta"
+        android:contentDescription="@string/bmu"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/btn_star_big_on"
+        android:layout_weight="1"
+        android:id="@+id/boton2"
+        android:layout_alignTop="@+id/boton1"
+        android:layout_toRightOf="@+id/audio"
+        android:layout_toEndOf="@+id/audio"
+        android:onClick="respuesta"
+        android:contentDescription="@string/bguau"/>
+
+    <Button
+        android:text="@string/bcomprobar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/boton2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:id="@+id/button8"
+        android:onClick="comprobar"/>
 </RelativeLayout>

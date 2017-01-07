@@ -51,6 +51,7 @@ public class Escucho2 extends AppCompatActivity {
             fail++;
 
             if(fail==3) {
+                fail=0;
                 //Añadir audio
                 Log.d("AQUI", "ENTRE tb");
                 Intent intent = new Intent(this, CorrectoActivity.class);

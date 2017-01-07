@@ -121,7 +121,7 @@ public class SubMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void escucho3(View v){
-        Intent intent= new Intent(this,Escucho3.class);
+        Intent intent= new Intent(this,Pre_Escucho3.class);
         startActivity(intent);
     }
 /*

@@ -50,7 +50,8 @@
         <activity android:name=".Juego2" />
         <activity android:name=".Escucho1" />
         <activity android:name=".Escucho2" />
-        <activity android:name=".Escucho3"></activity>
+        <activity android:name=".Escucho3" />
+        <activity android:name=".Pre_Escucho3"></activity>
     </application>
 
 </manifest>

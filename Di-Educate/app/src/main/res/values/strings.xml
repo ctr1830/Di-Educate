@@ -15,7 +15,15 @@
     <string name="bp">p</string>
     <string name="bd">d</string>
     <string name="bb">b</string>
+    <string name="badelante">adelante</string>
     <string name="bvolver">volver</string>
+    <string name="bguau">guau</string>
+    <string name="bmu">mu</string>
+    <string name="bplash">plash</string>
+    <string name="bring">ring</string>
+    <string name="brun">run</string>
+    <string name="bmuack">muack</string>
+    <string name="bboing">boing</string>
 
     <string name="bjuego1">Juego con las palabras 1</string>
     <string name="bescucho1">Esucucho mi voz 1</string>
@@ -50,4 +58,5 @@
     <string name="anewaccount">Cuenta Nueva</string>
     <string name="alogin">Iniciar Sesión</string>
     <string name="amenu">Menú</string>
+    <string name="title_activity_pre_escucho3">PreEscucho3</string>
 </resources>

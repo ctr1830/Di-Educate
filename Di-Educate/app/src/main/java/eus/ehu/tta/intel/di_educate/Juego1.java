@@ -82,6 +82,7 @@ public class Juego1 extends AppCompatActivity {
             //Log.d("FAIL",Integer.toString(fail));
             if(fail==3) {
                 //Añadir audio
+                fail=0;
                 Log.d("AQUI", "ENTRE tb");
                 Intent intent = new Intent(this, CorrectoActivity.class);
                 Bundle extras = new Bundle();
