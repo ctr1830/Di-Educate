@@ -10,4 +10,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="eus.ehu.tta.intel.di_educate.Escucho2">
 
+    <TextView
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/e_enunciado"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/texto"
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/e_enunciado"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/bcomprobar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button16"
+        android:onClick="comprobar"
+        android:layout_below="@+id/texto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp" />
 </RelativeLayout>
