@@ -1,6 +1,8 @@
 package eus.ehu.tta.intel.di_educate;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import Business.Communication;
@@ -46,6 +52,18 @@ public class LeoLeo1 extends AppCompatActivity {
             @Override
             protected void onFinish(Imagenes result) {
                 imagenes=result.getImagenes();
+
+                ImageView imagen1 =(ImageView)findViewById(R.id.foto1);
+                ImageView imagen2 =(ImageView)findViewById(R.id.foto2);
+/*
+                try {
+                    Bitmap bmp1 = BitmapFactory.decodeStream((InputStream)new URL(imagenes.get(0)).getContent());
+                    Bitmap bmp2 = BitmapFactory.decodeStream((InputStream)new URL(imagenes.get(1)).getContent());
+                    imagen1.setImageBitmap(bmp1);
+                    imagen2.setImageBitmap(bmp2);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }*/
             }
         }.execute();
     }
