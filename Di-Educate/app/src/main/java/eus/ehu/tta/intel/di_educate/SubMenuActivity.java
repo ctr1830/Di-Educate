@@ -29,7 +29,7 @@ public class SubMenuActivity extends AppCompatActivity {
 
     public void submenu(String opcion){
         LinearLayout layout = (LinearLayout) findViewById(R.id.activity_sub_menu);
-        MediaPlayer media=new MediaPlayer();
+
         switch(opcion){
             case "leoleo":
                 layout.removeView(findViewById(R.id.escucho1));
@@ -42,13 +42,15 @@ public class SubMenuActivity extends AppCompatActivity {
                 layout.setBackgroundResource(R.drawable.fondo2);
                 setTitle("Leo Leo");
 
-                media.create(this,R.raw.leoleo);
-                media.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                media.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    public void onPrepared(MediaPlayer mp) {
-                        mp.start();
+                MediaPlayer media_leoleo= MediaPlayer.create(this,R.raw.leoleo);
+                media_leoleo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.stop();
+                        mp.release();
                     }
                 });
+                media_leoleo.start();
                 break;
             case "juego":
                 layout.removeView(findViewById(R.id.leoleo1));
@@ -61,13 +63,16 @@ public class SubMenuActivity extends AppCompatActivity {
                 layout.removeView(findViewById(R.id.seguimiento3));
                 setTitle("Juego con las palabras");
                 layout.setBackgroundResource(R.drawable.fondo3);
-                media.create(this,R.raw.juego);
-                media.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                media.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    public void onPrepared(MediaPlayer mp) {
-                        mp.start();
+
+                MediaPlayer media_juego= MediaPlayer.create(this,R.raw.juego);
+                media_juego.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.stop();
+                        mp.release();
                     }
                 });
+                media_juego.start();
                 break;
             case "escucho":
                 layout.removeView(findViewById(R.id.leoleo1));
@@ -79,13 +84,16 @@ public class SubMenuActivity extends AppCompatActivity {
                 layout.removeView(findViewById(R.id.seguimiento2));
                 setTitle("Escucho mi voz");
                 layout.setBackgroundResource(R.drawable.fondo4);
-                media.create(this,R.raw.escucho);
-                media.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                media.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    public void onPrepared(MediaPlayer mp) {
-                        mp.start();
+
+                MediaPlayer media_escucho= MediaPlayer.create(this,R.raw.escucho);
+                media_escucho.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.stop();
+                        mp.release();
                     }
                 });
+                media_escucho.start();
                 break;
 
 
