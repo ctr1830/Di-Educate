@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Respuestas implements Serializable{
 
     private ArrayList<String> respuestas =new ArrayList<>();
-    private String texto_respuesta;
+    //private String texto_respuesta;
 
     public ArrayList<String> getRespuestas() {
         return respuestas;
@@ -20,8 +20,8 @@ public class Respuestas implements Serializable{
         respuestas.add(respuesta);
     }
 
-    public String getTexto_respuesta() {
+    /*public String getTexto_respuesta() {
         return texto_respuesta;
-    }
+    }*/
 
 }

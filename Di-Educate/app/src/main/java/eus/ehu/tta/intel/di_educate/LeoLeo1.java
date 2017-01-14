@@ -14,10 +14,12 @@ import java.util.ArrayList;
 
 import Business.Communication;
 import Business.ObtenerDatos;
+import Data.Imagenes;
 import Data.Respuestas;
 
 public class LeoLeo1 extends AppCompatActivity {
 
+    private ArrayList<String> imagenes;
     private ArrayList<String> respuesta;
     private static String boton1;
     private static String boton2;
@@ -29,6 +31,23 @@ public class LeoLeo1 extends AppCompatActivity {
         setContentView(R.layout.activity_leo_leo1);
 
         getRespuestas();
+        getImagenes();
+    }
+
+    public void getImagenes(){
+        new Communication<Imagenes>(this){
+            @Override
+            protected Imagenes work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Imagenes imagenes= data.getImagenes(1);
+                return imagenes;
+            }
+
+            @Override
+            protected void onFinish(Imagenes result) {
+                imagenes=result.getImagenes();
+            }
+        }.execute();
     }
 
     public void getRespuestas(){
@@ -36,7 +55,7 @@ public class LeoLeo1 extends AppCompatActivity {
             @Override
             protected Respuestas work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Respuestas respuesta= data.getRespuestas();
+                Respuestas respuesta= data.getRespuestas(1);
                 return respuesta;
             }
 
