@@ -1,6 +1,7 @@
 package eus.ehu.tta.intel.di_educate;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,10 +50,17 @@ public class Escucho2 extends AppCompatActivity {
         }
         else{
             fail++;
-
+            MediaPlayer media= MediaPlayer.create(this,R.raw.fail);
+            media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mp.stop();
+                    mp.release();
+                }
+            });
+            media.start();
             if(fail==3) {
                 fail=0;
-                //Añadir audio
                 Log.d("AQUI", "ENTRE tb");
                 Intent intent = new Intent(this, CorrectoActivity.class);
                 Bundle extras = new Bundle();

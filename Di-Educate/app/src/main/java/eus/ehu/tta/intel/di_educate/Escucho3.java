@@ -1,6 +1,7 @@
 package eus.ehu.tta.intel.di_educate;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,16 @@ public class Escucho3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escucho3);
+
+        MediaPlayer media= MediaPlayer.create(this,R.raw.enunciado);
+        media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.stop();
+                mp.release();
+            }
+        });
+        media.start();
     }
     public void respuesta(View v){
         ImageButton arg0 = (ImageButton) v;
@@ -86,8 +97,15 @@ public class Escucho3 extends AppCompatActivity {
         }
         else{
             fail++;
-            Log.d("AQUI", "ENTRE");
-            Log.d("AQUI", Integer.toString(fail));
+            MediaPlayer media= MediaPlayer.create(this,R.raw.fail);
+            media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mp.stop();
+                    mp.release();
+                }
+            });
+            media.start();
             if(fail==3) {
                 fail=0;
                 //Añadir audio

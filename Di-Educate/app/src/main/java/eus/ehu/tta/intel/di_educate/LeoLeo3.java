@@ -1,6 +1,7 @@
 package eus.ehu.tta.intel.di_educate;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -89,11 +90,16 @@ public class LeoLeo3 extends AppCompatActivity {
             fail++;
             boton = null;
             array.clear();
-
-            //Log.d("AQUI","ENTRE");
-            //Log.d("FAIL",Integer.toString(fail));
+            MediaPlayer media= MediaPlayer.create(this,R.raw.fail);
+            media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mp.stop();
+                    mp.release();
+                }
+            });
+            media.start();
             if(fail==3) {
-                //Añadir audio
                 fail=0;
                 Log.d("AQUI", "ENTRE tb");
                 Intent intent = new Intent(this, CorrectoActivity.class);

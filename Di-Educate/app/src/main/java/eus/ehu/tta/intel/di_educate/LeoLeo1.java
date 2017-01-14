@@ -1,6 +1,7 @@
 package eus.ehu.tta.intel.di_educate;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,8 +51,11 @@ public class LeoLeo1 extends AppCompatActivity {
         Button button4=(Button)this.findViewById(R.id.bl4);
         ImageView image1=(ImageView)findViewById(R.id.foto1);
         ImageView image2=(ImageView)findViewById(R.id.foto2);
-        Log.d("boton1",boton1);
-        Log.d("boton2",boton2);
+
+        if((boton1==null)||(boton2==null)){
+            boton1="";
+            boton2="";
+        }
 
          if((boton1.equals("p"))&&(boton2.equals("d"))){
             fail=0;
@@ -95,9 +99,16 @@ public class LeoLeo1 extends AppCompatActivity {
          }
         else{
              fail++;
-             Log.d("AQUI","ENTRE");
+             MediaPlayer media= MediaPlayer.create(this,R.raw.fail);
+             media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                 @Override
+                 public void onCompletion(MediaPlayer mp) {
+                     mp.stop();
+                     mp.release();
+                 }
+             });
+             media.start();
              if(fail==3){
-                 //Añadir audio
                  fail=0;
                  Log.d("AQUI","ENTRE tb");
                  Intent intent= new Intent(this,CorrectoActivity.class);

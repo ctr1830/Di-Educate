@@ -1,6 +1,7 @@
 package eus.ehu.tta.intel.di_educate;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ public class CorrectoActivity extends AppCompatActivity {
 
     private static String opcion;
     private static String correcto;
+    private static  MediaPlayer ayuda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +34,26 @@ public class CorrectoActivity extends AppCompatActivity {
             PlayGifView pGif = (PlayGifView) findViewById(R.id.correcto);
             pGif.setImageResource(R.drawable.correct);
 
+            ayuda= MediaPlayer.create(this,R.raw.aplausos);
+            ayuda.start();
+
+
         } else {
             findViewById(R.id.volvercorrecto).setVisibility(View.VISIBLE);
             PlayGifView pGif = (PlayGifView) findViewById(R.id.correcto);
             findViewById(R.id.tayuda).setVisibility(View.VISIBLE);
             pGif.setImageResource(R.drawable.ayuda);
+
+            ayuda= MediaPlayer.create(this,R.raw.ayuda);
+            ayuda.start();
         }
 
+    }
+
+    protected void onPause(){
+        super.onPause();
+        ayuda.stop();
+        ayuda.release();
     }
 
     public void volverCorrecto(View v){
