@@ -75,34 +75,6 @@ public class RestClient {
         return new JSONObject(getString(path));
     }
 
-    public int postFile (String path, InputStream is, String filename) throws IOException{
-        String boundary = Long.toString(System.currentTimeMillis());
-        String newline= "\r\n";
-        String prefix = "--";
-        HttpURLConnection conn= null;
-        try{
-            conn = getConnection(path);
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-type", "multipart/form-data;boundary="+boundary);
-            DataOutputStream out=new DataOutputStream(conn.getOutputStream());
-            out.writeBytes(prefix+boundary+newline);
-            out.writeBytes("Content-Disposition: form-data; name=\"file\";filename=\""+filename+"\""+newline);
-            out.writeBytes(newline);
-            byte[] data=new byte[1024*1024];
-            int len;
-            while((len=is.read(data))>0){
-                out.write(data,0,len);
-            }
-            out.writeBytes(newline);
-            out.writeBytes(prefix+boundary+prefix+newline);
-            out.close();
-            return conn.getResponseCode();
-        }finally{
-            if(conn!=null){
-                conn.disconnect();
-            }
-        }
-    }
     public int postJson (final JSONObject json, String path) throws IOException{
         HttpURLConnection conn = null;
         try{

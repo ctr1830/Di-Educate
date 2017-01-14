@@ -10,8 +10,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import Business.Communication;
+import Business.ObtenerDatos;
+import Data.Respuestas;
+
 public class LeoLeo1 extends AppCompatActivity {
 
+    private ArrayList<String> respuesta;
     private static String boton1;
     private static String boton2;
     private static int fail=0;
@@ -20,8 +27,25 @@ public class LeoLeo1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leo_leo1);
+
+        getRespuestas();
     }
 
+    public void getRespuestas(){
+        new Communication<Respuestas>(this){
+            @Override
+            protected Respuestas work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Respuestas respuesta= data.getRespuestas();
+                return respuesta;
+            }
+
+            @Override
+            protected void onFinish(Respuestas result) {
+                respuesta=result.getRespuestas();
+            }
+        }.execute();
+    }
     public void onclick1(View v){
         Button arg0 = (Button) v;
         boton1=arg0.getText().toString();
@@ -57,7 +81,7 @@ public class LeoLeo1 extends AppCompatActivity {
             boton2="";
         }
 
-         if((boton1.equals("p"))&&(boton2.equals("d"))){
+         if((boton1.equals(respuesta.get(0)))&&(boton2.equals(respuesta.get(1)))){
             fail=0;
             boton1=null;
             boton2=null;
@@ -71,7 +95,7 @@ public class LeoLeo1 extends AppCompatActivity {
             button3.setText("d");
             button4.setText("b");
         }
-        else if((boton1.equals("b"))&&(boton2.equals("d"))){
+        else if((boton1.equals(respuesta.get(2)))&&(boton2.equals(respuesta.get(3)))){
              fail=0;
              boton1=null;
              boton2=null;
@@ -85,7 +109,7 @@ public class LeoLeo1 extends AppCompatActivity {
              button4.setText("b");
 
          }
-         else if((boton1.equals("p"))&&(boton2.equals("b"))){
+         else if((boton1.equals(respuesta.get(4)))&&(boton2.equals(respuesta.get(5)))){
              fail=0;
              boton1=null;
              boton2=null;
