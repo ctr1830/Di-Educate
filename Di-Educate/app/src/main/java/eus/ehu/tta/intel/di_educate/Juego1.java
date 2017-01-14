@@ -43,6 +43,10 @@ public class Juego1 extends AppCompatActivity {
         Button button3=(Button)this.findViewById(R.id.bj13);
         TextView texto=(TextView)findViewById(R.id.pal);
 
+        if(boton==null) {
+            boton = "";
+        }
+
         if(boton.equals(resp_correcta[0])){
             fail=0;
             boton=null;

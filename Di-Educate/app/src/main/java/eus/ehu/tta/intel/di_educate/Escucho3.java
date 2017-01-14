@@ -41,6 +41,10 @@ public class Escucho3 extends AppCompatActivity {
         ImageButton imagen2=(ImageButton)findViewById(R.id.boton2);
         ImageButton audio=(ImageButton)findViewById(R.id.audio);
 
+        if(boton==null) {
+            boton = "";
+        }
+
         Log.d("ENTRE","ENTRE!!");
 
         if((boton.equals(resp_correcta[0]))&&(times==0)){

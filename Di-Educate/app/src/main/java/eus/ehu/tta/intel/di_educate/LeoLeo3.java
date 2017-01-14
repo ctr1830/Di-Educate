@@ -51,6 +51,9 @@ public class LeoLeo3 extends AppCompatActivity {
         //Log.d("ARRAY",array.get(0));
         //Log.d("ARRAY",array.get(1));
         //Log.d("ARRAY",array.get(2));
+        if (boton==null){
+            array.add("");
+        }
 
         if((resp_correcta1[0].equals(array.get(0)))&&(resp_correcta1[1].equals(array.get(1)))&&(resp_correcta1[2].equals(array.get(2)))) {
             fail = 0;

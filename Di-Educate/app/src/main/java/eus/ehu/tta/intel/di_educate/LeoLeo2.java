@@ -44,6 +44,10 @@ public class LeoLeo2 extends AppCompatActivity {
         Button button3=(Button)this.findViewById(R.id.bl23);
         Button button4=(Button)this.findViewById(R.id.bl24);
 
+        if(boton==null) {
+            boton = "";
+        }
+
         if(boton.equals(resp_correcta[0])){
             fail=0;
             boton=null;

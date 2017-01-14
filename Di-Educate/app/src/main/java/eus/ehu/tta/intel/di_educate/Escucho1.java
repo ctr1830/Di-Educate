@@ -38,6 +38,10 @@ public class Escucho1 extends AppCompatActivity {
         Button button1=(Button)this.findViewById(R.id.be11);
         Button button2=(Button)this.findViewById(R.id.be12);
 
+        if(boton==null) {
+            boton = "";
+        }
+
         if(boton.equals(resp_correcta[0])){
             fail=0;
             boton=null;
