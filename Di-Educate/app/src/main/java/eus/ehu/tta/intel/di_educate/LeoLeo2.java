@@ -8,16 +8,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Business.Communication;
 import Business.ObtenerDatos;
+import Data.Audio;
+import Data.Imagenes;
 import Data.Respuestas;
 
 public class LeoLeo2 extends AppCompatActivity {
 
     private static String boton;
     private static int fail=0;
+    private static int stage=0;
+    private ArrayList<String> audio=null;
     private ArrayList<String> respuesta=null;
 
     @Override
@@ -26,6 +31,7 @@ public class LeoLeo2 extends AppCompatActivity {
         setContentView(R.layout.activity_leo_leo2);
 
         getRespuestas();
+        getAudio();
 
         Button button1=(Button)this.findViewById(R.id.bl21);
         button1.setText("melon");
@@ -35,6 +41,22 @@ public class LeoLeo2 extends AppCompatActivity {
         button3.setText("camion");
         Button button4=(Button)this.findViewById(R.id.bl24);
         button4.setText("platon");
+    }
+
+    public void getAudio(){
+        new Communication<Audio>(this){
+            @Override
+            protected Audio work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Audio url= data.getAudio(2);
+                return url;
+            }
+
+            @Override
+            protected void onFinish(Audio result) {
+                audio=result.getAudios();
+            }
+        }.execute();
     }
 
     public void getRespuestas(){
@@ -58,8 +80,26 @@ public class LeoLeo2 extends AppCompatActivity {
         boton=arg0.getText().toString();
         Log.d("boton",boton);
     }
-    public void audio(View v){
+    public void audio(View v) throws IOException {
+        MediaPlayer media= new MediaPlayer();
 
+        if(stage==0){
+            media.setDataSource(audio.get(0));
+        }else if(stage==1){
+            media.setDataSource(audio.get(1));
+        }else if (stage==2){
+            media.setDataSource(audio.get(2));
+        }
+
+        media.prepare();
+        media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.stop();
+                mp.release();
+            }
+        });
+        media.start();
     }
     public void comprobar2(View v){
 
@@ -76,6 +116,7 @@ public class LeoLeo2 extends AppCompatActivity {
         if(boton.equals(respuesta.get(0))){
             fail=0;
             boton=null;
+            stage=1;
             //Cambiar audio
 
             //inicializar botones
@@ -87,6 +128,7 @@ public class LeoLeo2 extends AppCompatActivity {
 
          else if(boton.equals(respuesta.get(1))){
             fail=0;
+            stage=2;
             boton=null;
             //Cambiar audio
 

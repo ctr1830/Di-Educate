@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import Data.Audio;
 import Data.Imagenes;
 import Data.Respuestas;
 
@@ -46,6 +47,20 @@ public class ObtenerDatos {
             JSONObject item=array.getJSONObject(i);
             urls.setImagenes(item.getString("url"));
             System.out.println(urls.getImagenes().get(i));
+        }
+        return urls;
+    }
+
+    public Audio getAudio(int id) throws Exception{
+        Audio urls=new Audio();
+
+        JSONObject json;
+        json = cliente.getJson("requestAudios?ejercicio="+id);
+        JSONArray array =json.getJSONArray("audio");
+        for (int i=0;i<array.length();i++){
+            JSONObject item=array.getJSONObject(i);
+            urls.setAudios(item.getString("url"));
+            System.out.println(urls.getAudios().get(i));
         }
         return urls;
     }
