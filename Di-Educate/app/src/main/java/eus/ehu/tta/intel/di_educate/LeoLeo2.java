@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import Business.Communication;
 import Business.ObtenerDatos;
 import Data.Audio;
-import Data.Imagenes;
 import Data.Respuestas;
 
 public class LeoLeo2 extends AppCompatActivity {

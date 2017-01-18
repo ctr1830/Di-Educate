@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_escucho2"
     android:layout_width="match_parent"
@@ -19,15 +20,25 @@
         android:id="@+id/e_enunciado"
         android:textSize="18sp" />
 
+    <ImageButton
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:srcCompat="@drawable/audio"
+        android:id="@+id/imageView3"
+        android:onClick="audio"
+        android:layout_below="@+id/e_enunciado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/texto"
-        android:layout_marginTop="46dp"
-        android:layout_below="@+id/e_enunciado"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/imageView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp" />
 
     <Button
         android:text="@string/bcomprobar"
@@ -35,7 +46,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/button16"
         android:onClick="comprobar"
+        android:layout_marginTop="41dp"
         android:layout_below="@+id/texto"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

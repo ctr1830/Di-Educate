@@ -1,15 +1,11 @@
 package eus.ehu.tta.intel.di_educate;
 
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import java.io.IOException;
 
 public class SubMenuActivity extends AppCompatActivity {
     //public final static String EXTRA_USERNAME= "login";

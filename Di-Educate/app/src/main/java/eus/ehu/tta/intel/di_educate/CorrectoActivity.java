@@ -2,13 +2,10 @@ package eus.ehu.tta.intel.di_educate;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ImageView;
 
 public class CorrectoActivity extends AppCompatActivity {
 

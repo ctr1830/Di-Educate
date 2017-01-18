@@ -9,36 +9,105 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import Business.Communication;
+import Business.ObtenerDatos;
+import Data.Audio;
+import Data.Respuestas;
+
 public class Escucho2 extends AppCompatActivity {
 
     private static int fail=0;
-    private static String resp_correcta[]={"clavito","tigres","desenladrillador"};
+    private static int stage=0;
+    private ArrayList<String> audio=null;
+    private ArrayList<String> respuesta=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escucho2);
 
+        getRespuesta();
+        getAudio();
+
         //reproduccion audio
         TextView enun=(TextView)findViewById(R.id.e_enunciado);
         enun.setText("Pablito clavo un clavito. ¿Qué __________ clavo Pablito?");
+    }
+
+    public void getRespuesta(){
+        new Communication<Respuestas>(this){
+            @Override
+            protected Respuestas work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Respuestas respuesta= data.getRespuestas(7);
+                return respuesta;
+            }
+
+            @Override
+            protected void onFinish(Respuestas result) {
+                respuesta=result.getRespuestas();
+            }
+        }.execute();
+    }
+
+    public void getAudio(){
+        new Communication<Audio>(this){
+            @Override
+            protected Audio work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Audio url= data.getAudio(7);
+                return url;
+            }
+
+            @Override
+            protected void onFinish(Audio result) {
+                audio=result.getAudios();
+            }
+        }.execute();
+    }
+
+    public void audio(View v) throws IOException{
+        MediaPlayer media= new MediaPlayer();
+
+        if(stage==0){
+            media.setDataSource(audio.get(0));
+        }else if(stage==1){
+            media.setDataSource(audio.get(1));
+        }else if (stage==2){
+            media.setDataSource(audio.get(2));
+        }
+
+        media.prepare();
+        media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.stop();
+                mp.release();
+            }
+        });
+        media.start();
     }
 
     public void comprobar(View v){
         EditText texto=(EditText)findViewById(R.id.texto);
         TextView enun=(TextView)findViewById(R.id.e_enunciado);
 
-        if(texto.getText().toString().equals(resp_correcta[0])) {
+        if(texto.getText().toString().equals(respuesta.get(0))) {
             fail=0;
+            stage=1;
             enun.setText("Tres tristes __________ trigaban trigo en un trigal");
             texto.setText("");
         }
-        else if (texto.getText().toString().equals(resp_correcta[1])){
+        else if (texto.getText().toString().equals(respuesta.get(1))){
             fail=0;
+            stage=2;
             enun.setText("El cielo esta enladrillado. ¿Quién lo desenladrillará? El _____________ que lo desenladrille, buen desenladrillador será");
             texto.setText("");
         }
-        else if (texto.getText().toString().equals(resp_correcta[2])){
+        else if (texto.getText().toString().equals(respuesta.get(2))){
             fail=0;
             //Conseguido
             Intent intent= new Intent(this,CorrectoActivity.class);
