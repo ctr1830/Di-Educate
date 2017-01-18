@@ -9,18 +9,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import Business.Communication;
+import Business.ObtenerDatos;
+import Data.Respuestas;
+
 public class Juego2 extends AppCompatActivity {
 
     private static String boton;
     private static int fail=0;
-    private static String resp_correcta[]={"pla","fan","tu"};
+    private ArrayList<String> respuestas=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego2);
 
-        //reproducir
+        getRespuestas();
+
         Button button1=(Button)this.findViewById(R.id.bj21);
         button1.setText("pla");
         Button button2=(Button)this.findViewById(R.id.bj22);
@@ -29,6 +36,22 @@ public class Juego2 extends AppCompatActivity {
         button3.setText("la");
         TextView texto=(TextView)findViewById(R.id.j2pal);
         texto.setText("Explanado - Plano");
+    }
+
+    public void getRespuestas(){
+        new Communication<Respuestas>(this){
+            @Override
+            protected Respuestas work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Respuestas respuesta= data.getRespuestas(5);
+                return respuesta;
+            }
+
+            @Override
+            protected void onFinish(Respuestas result) {
+                respuestas=result.getRespuestas();
+            }
+        }.execute();
     }
 
     public void respuesta(View v){
@@ -47,7 +70,7 @@ public class Juego2 extends AppCompatActivity {
             boton = "";
         }
 
-        if(boton.equals(resp_correcta[0])){
+        if(boton.equals(respuestas.get(0))){
             fail=0;
             boton=null;
             //inicializar botones
@@ -57,7 +80,7 @@ public class Juego2 extends AppCompatActivity {
             texto.setText("Elefante - Fantasma");
         }
 
-        else if(boton.equals(resp_correcta[1])){
+        else if(boton.equals(respuestas.get(1))){
             fail=0;
             boton=null;
             //inicializar botones
@@ -67,7 +90,7 @@ public class Juego2 extends AppCompatActivity {
             texto.setText("Estuche - Túnica");
 
         }
-        else if(boton.equals(resp_correcta[2])){
+        else if(boton.equals(respuestas.get(2))){
             fail=0;
             boton=null;
             //Conseguido
