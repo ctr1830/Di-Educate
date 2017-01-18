@@ -1,26 +1,165 @@
 package eus.ehu.tta.intel.di_educate;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+
+import Business.Communication;
+import Business.ObtenerDatos;
+import Data.Audio;
+import Data.Imagenes;
+import Data.Respuestas;
 
 public class Escucho3 extends AppCompatActivity {
 
     private static String boton;
     private static int fail=0;
     private static int times=0;
-    private static String resp_correcta[]={"mu","guau","run","muack","boing","ring"};
+    private static int stage=0;
+    private ArrayList<String> imagenes=null;
+    private ArrayList<String> audio=null;
+    private ArrayList<String> respuesta=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escucho3);
 
+        Intent intent =getIntent();
+        audio=intent.getStringArrayListExtra("audio");
+
+        getRespuestas();
+        getImagenes(1);
+        getImagenes(2);
+
         MediaPlayer media= MediaPlayer.create(this,R.raw.enunciado);
+        media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.stop();
+                mp.release();
+            }
+        });
+        media.start();
+    }
+
+    public void getRespuestas(){
+        new Communication<Respuestas>(this){
+            @Override
+            protected Respuestas work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Respuestas respuesta= data.getRespuestas(8);
+                return respuesta;
+            }
+
+            @Override
+            protected void onFinish(Respuestas result) {
+                respuesta=result.getRespuestas();
+            }
+        }.execute();
+    }
+    public void downloadImagenes(final int i, final String imagen){
+        new Communication<Bitmap>(this){
+            @Override
+            protected Bitmap work() throws Exception{
+                Bitmap bmp=null;
+                try {
+                    URL url=new URL(imagen);
+                    bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+                return bmp;
+            }
+
+            @Override
+            protected void onFinish(Bitmap result) {
+
+                ImageView imagen1=(ImageView)findViewById(R.id.boton1);
+                ImageView imagen2=(ImageView)findViewById(R.id.boton2);
+                Bitmap resized = Bitmap.createScaledBitmap(result, 300, 300, true);
+
+                switch(i){
+                    case 1:
+                        imagen1.setImageBitmap(resized);
+                        imagen1.setContentDescription("muu");
+                        break;
+                    case 2:
+                        imagen2.setImageBitmap(resized);
+                        imagen2.setContentDescription("guau");
+                        break;
+                    case 3:
+                        imagen1.setImageBitmap(resized);
+                        imagen1.setContentDescription("plash");
+                        break;
+                    case 4:
+                        imagen1.setImageBitmap(resized);
+                        imagen1.setContentDescription("run");
+                        break;
+                    case 5:
+                        imagen2.setImageBitmap(resized);
+                        imagen2.setContentDescription("ring");
+                        break;
+                    case 6:
+                        imagen2.setImageBitmap(resized);
+                        imagen2.setContentDescription("muack");
+                        break;
+                    case 7:
+                        imagen1.setImageBitmap(resized);
+                        imagen1.setContentDescription("boing");
+                        break;
+
+                }
+            }
+        }.execute();
+    }
+
+    public void getImagenes(final int i){
+        new Communication<Imagenes>(this){
+            @Override
+            protected Imagenes work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Imagenes imagenes= data.getImagenes(8);
+                return imagenes;
+            }
+
+            @Override
+            protected void onFinish(Imagenes result) {
+                imagenes=result.getImagenes();
+                downloadImagenes(i,imagenes.get(i));
+            }
+        }.execute();
+    }
+
+    public void audio(View v)throws IOException{
+        MediaPlayer media= new MediaPlayer();
+
+        if(stage==0){
+            media.setDataSource(audio.get(1));
+        }else if(stage==1){
+            media.setDataSource(audio.get(2));
+        }else if (stage==2){
+            media.setDataSource(audio.get(3));
+        }else if(stage==3){
+            media.setDataSource(audio.get(4));
+        }else if (stage==4){
+            media.setDataSource(audio.get(5));
+        }else if (stage==5){
+            media.setDataSource(audio.get(6));
+        }
+
+        media.prepare();
         media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -38,7 +177,10 @@ public class Escucho3 extends AppCompatActivity {
     public void comprobar (View v){
         ImageButton imagen1=(ImageButton)findViewById(R.id.boton1);
         ImageButton imagen2=(ImageButton)findViewById(R.id.boton2);
-        ImageButton audio=(ImageButton)findViewById(R.id.audio);
+
+        System.out.println("PRUEBA");
+        System.out.println(boton);
+        System.out.println(respuesta.get(0));
 
         if(boton==null) {
             boton = "";
@@ -46,47 +188,57 @@ public class Escucho3 extends AppCompatActivity {
 
         Log.d("ENTRE","ENTRE!!");
 
-        if((boton.equals(resp_correcta[0]))&&(times==0)){
+        if((boton.equals(respuesta.get(0)))&&(times==0)){
             fail=0;
+            stage++;
             times++;
             boton=null;
-            //audio.setImageResource();
-            imagen1.setContentDescription("guau");
-            imagen2.setContentDescription("plash");
+            getImagenes(2);
+            getImagenes(3);
+            //imagen2.setContentDescription("guau");
+            //imagen1.setContentDescription("plash");
         }
-        else if((boton.equals(resp_correcta[1]))&&(times==1)){
+        else if((boton.equals(respuesta.get(1)))&&(times==1)){
             fail=0;
+            stage++;
             times++;
             boton=null;
-            //audio.setImageResource();
-            imagen1.setContentDescription("run");
-            imagen2.setContentDescription("ring");
+            getImagenes(4);
+            getImagenes(5);
+            //imagen1.setContentDescription("run");
+            //imagen2.setContentDescription("ring");
         }
-        else if((boton.equals(resp_correcta[2]))&&(times==2)){
+        else if((boton.equals(respuesta.get(2)))&&(times==2)){
             fail=0;
+            stage++;
             times++;
             boton=null;
-            //audio.setImageResource();
-            imagen1.setContentDescription("guau");
-            imagen2.setContentDescription("muack");
+            getImagenes(2);
+            getImagenes(6);
+            //imagen1.setContentDescription("guau");
+            //imagen2.setContentDescription("muack");
         }
-        else if((boton.equals(resp_correcta[3]))&&(times==3)){
+        else if((boton.equals(respuesta.get(3)))&&(times==3)){
             fail=0;
+            stage++;
             times++;
             boton=null;
-            //audio.setImageResource();
-            imagen1.setContentDescription("boing");
-            imagen2.setContentDescription("ring");
+            getImagenes(7);
+            getImagenes(5);
+            //imagen1.setContentDescription("boing");
+            //imagen2.setContentDescription("ring");
         }
-        else if((boton.equals(resp_correcta[4]))&&(times==4)){
+        else if((boton.equals(respuesta.get(4)))&&(times==4)){
             fail=0;
+            stage++;
             times++;
             boton=null;
-            //audio.setImageResource();
-            imagen1.setContentDescription("ring");
-            imagen2.setContentDescription("mu");
+            getImagenes(5);
+            getImagenes(1);
+            //imagen2.setContentDescription("ring");
+            //imagen1.setContentDescription("mu");
         }
-        else if((boton.equals(resp_correcta[5]))&&(times==5)){
+        else if((boton.equals(respuesta.get(5)))&&(times==5)){
             fail=0;
             times++;
             boton=null;
