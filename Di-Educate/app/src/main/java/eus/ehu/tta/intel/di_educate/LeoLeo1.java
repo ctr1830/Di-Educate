@@ -25,8 +25,8 @@ import Data.Respuestas;
 
 public class LeoLeo1 extends AppCompatActivity {
 
-    private ArrayList<String> imagenes;
-    private ArrayList<String> respuesta;
+    private ArrayList<String> imagenes=null;
+    private ArrayList<String> respuesta=new ArrayList<String>();
     private static String boton1;
     private static String boton2;
     private static int fail=0;
@@ -37,10 +37,42 @@ public class LeoLeo1 extends AppCompatActivity {
         setContentView(R.layout.activity_leo_leo1);
 
         getRespuestas();
-        getImagenes();
+        getImagenes(0);
+        getImagenes(1);
     }
 
-    public void getImagenes(){
+    public void downloadImagenes(final int i, final String imagen){
+        new Communication<Bitmap>(this){
+            @Override
+            protected Bitmap work() throws Exception{
+                Bitmap bmp=null;
+                try {
+                    URL url=new URL(imagen);
+                    bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+                return bmp;
+            }
+
+            @Override
+            protected void onFinish(Bitmap result) {
+
+                ImageView imagen1=(ImageView)findViewById(R.id.foto1);
+                ImageView imagen2=(ImageView)findViewById(R.id.foto2);
+
+                if((i==1)||(i==3)||(i==5)||(i==7)){
+                    imagen2.setImageBitmap(result);
+                }
+                else if((i==0)||(i==2)||(i==4)||(i==6)){
+                    imagen1.setImageBitmap(result);
+                }
+
+            }
+        }.execute();
+    }
+
+    public void getImagenes(final int i){
         new Communication<Imagenes>(this){
             @Override
             protected Imagenes work() throws Exception{
@@ -52,18 +84,7 @@ public class LeoLeo1 extends AppCompatActivity {
             @Override
             protected void onFinish(Imagenes result) {
                 imagenes=result.getImagenes();
-
-                ImageView imagen1 =(ImageView)findViewById(R.id.foto1);
-                ImageView imagen2 =(ImageView)findViewById(R.id.foto2);
-/*
-                try {
-                    Bitmap bmp1 = BitmapFactory.decodeStream((InputStream)new URL(imagenes.get(0)).getContent());
-                    Bitmap bmp2 = BitmapFactory.decodeStream((InputStream)new URL(imagenes.get(1)).getContent());
-                    imagen1.setImageBitmap(bmp1);
-                    imagen2.setImageBitmap(bmp2);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
+                downloadImagenes(i,imagenes.get(i));
             }
         }.execute();
     }
@@ -123,9 +144,8 @@ public class LeoLeo1 extends AppCompatActivity {
             boton1=null;
             boton2=null;
              //Cargar nuevas imagenes
-
-             image1.setImageResource(R.drawable.avanza);
-             image2.setImageResource(R.drawable.avanza);
+             getImagenes(2);
+             getImagenes(3);
 
             button1.setText("d");
             button2.setText("b");
@@ -137,8 +157,8 @@ public class LeoLeo1 extends AppCompatActivity {
              boton1=null;
              boton2=null;
              //Cargar nuevas imagenes
-             image1.setImageResource(R.drawable.audio);
-             image2.setImageResource(R.drawable.audio);
+             getImagenes(4);
+             getImagenes(5);
 
              button1.setText("p");
              button2.setText("b");
