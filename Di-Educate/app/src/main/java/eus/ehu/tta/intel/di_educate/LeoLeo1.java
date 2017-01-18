@@ -26,7 +26,7 @@ import Data.Respuestas;
 public class LeoLeo1 extends AppCompatActivity {
 
     private ArrayList<String> imagenes=null;
-    private ArrayList<String> respuesta=new ArrayList<String>();
+    private ArrayList<String> respuesta=null;
     private static String boton1;
     private static String boton2;
     private static int fail=0;
@@ -63,9 +63,11 @@ public class LeoLeo1 extends AppCompatActivity {
 
                 if((i==1)||(i==3)||(i==5)||(i==7)){
                     imagen2.setImageBitmap(result);
+                    imagen2.setVisibility(View.VISIBLE);
                 }
                 else if((i==0)||(i==2)||(i==4)||(i==6)){
                     imagen1.setImageBitmap(result);
+                    imagen1.setVisibility(View.VISIBLE);
                 }
 
             }

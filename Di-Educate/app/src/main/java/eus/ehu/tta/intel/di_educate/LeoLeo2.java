@@ -8,26 +8,51 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
+import Business.Communication;
+import Business.ObtenerDatos;
+import Data.Respuestas;
+
 public class LeoLeo2 extends AppCompatActivity {
 
     private static String boton;
     private static int fail=0;
-    private static String resp_correcta[]={"ratón","callar","abuelo"};
+    private ArrayList<String> respuesta=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leo_leo2);
 
+        getRespuestas();
+
         Button button1=(Button)this.findViewById(R.id.bl21);
-        button1.setText("melón");
+        button1.setText("melon");
         Button button2=(Button)this.findViewById(R.id.bl22);
-        button2.setText("ratón");
+        button2.setText("raton");
         Button button3=(Button)this.findViewById(R.id.bl23);
-        button3.setText("camión");
+        button3.setText("camion");
         Button button4=(Button)this.findViewById(R.id.bl24);
-        button4.setText("platón");
+        button4.setText("platon");
     }
+
+    public void getRespuestas(){
+        new Communication<Respuestas>(this){
+            @Override
+            protected Respuestas work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Respuestas respuesta= data.getRespuestas(2);
+                return respuesta;
+            }
+
+            @Override
+            protected void onFinish(Respuestas result) {
+                respuesta=result.getRespuestas();
+            }
+        }.execute();
+    }
+
     public void respuesta(View v){
         Button arg0 = (Button) v;
         boton=arg0.getText().toString();
@@ -38,7 +63,7 @@ public class LeoLeo2 extends AppCompatActivity {
     }
     public void comprobar2(View v){
 
-        Log.d("correcta",resp_correcta[0]);
+        Log.d("correcta",respuesta.get(0));
         Button button1=(Button)this.findViewById(R.id.bl21);
         Button button2=(Button)this.findViewById(R.id.bl22);
         Button button3=(Button)this.findViewById(R.id.bl23);
@@ -48,7 +73,7 @@ public class LeoLeo2 extends AppCompatActivity {
             boton = "";
         }
 
-        if(boton.equals(resp_correcta[0])){
+        if(boton.equals(respuesta.get(0))){
             fail=0;
             boton=null;
             //Cambiar audio
@@ -60,7 +85,7 @@ public class LeoLeo2 extends AppCompatActivity {
             button4.setText("titubear");
         }
 
-         else if(boton.equals(resp_correcta[1])){
+         else if(boton.equals(respuesta.get(1))){
             fail=0;
             boton=null;
             //Cambiar audio
@@ -72,7 +97,7 @@ public class LeoLeo2 extends AppCompatActivity {
             button4.setText("abuelo");
 
         }
-        else if(boton.equals(resp_correcta[2])){
+        else if(boton.equals(respuesta.get(2))){
             fail=0;
             boton=null;
             //Conseguido
