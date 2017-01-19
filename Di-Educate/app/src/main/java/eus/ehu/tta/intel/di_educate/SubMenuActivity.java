@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 public class SubMenuActivity extends AppCompatActivity {
-    //public final static String EXTRA_USERNAME= "login";
+    public final static String EXTRA_USERNAME= "login";
     public final static String EXTRA_OPTION= "leoleo";
 
     @Override
@@ -128,17 +128,26 @@ public class SubMenuActivity extends AppCompatActivity {
 
     public void seguimiento1(View v){
         Intent intent= new Intent(this,Seguimiento.class);
-        intent.putExtra(Seguimiento.EXTRA_OPTION,"leoleo");
+        Bundle bundle=new Bundle();
+        bundle.putString("opcion","leoleo");
+        bundle.putString("username",EXTRA_USERNAME);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
     public void seguimiento2(View v){
         Intent intent= new Intent(this,Seguimiento.class);
-        intent.putExtra(Seguimiento.EXTRA_OPTION,"juego");
+        Bundle bundle=new Bundle();
+        bundle.putString("opcion","juego");
+        bundle.putString("username",EXTRA_USERNAME);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
     public void seguimiento3(View v){
         Intent intent= new Intent(this,Seguimiento.class);
-        intent.putExtra(Seguimiento.EXTRA_OPTION,"escucho");
+        Bundle bundle=new Bundle();
+        bundle.putString("opcion","escucho");
+        bundle.putString("username",EXTRA_USERNAME);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

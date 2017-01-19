@@ -18,9 +18,11 @@ import Data.Respuestas;
 
 public class Escucho1 extends AppCompatActivity {
 
+    public final static String EXTRA_LOGIN= "login";
     private static String boton;
     private static int stage=0;
     private static int fail=0;
+    public final static int EXTRA_USERID= 16;
     private ArrayList<String> audio=null;
     private ArrayList<String> respuesta=null;
 
@@ -129,13 +131,7 @@ public class Escucho1 extends AppCompatActivity {
         else if(boton.equals(respuesta.get(2))){
             fail=0;
             boton=null;
-            //Conseguido
-            Intent intent= new Intent(this,CorrectoActivity.class);
-            Bundle extras=new Bundle();
-            extras.putString("opcion","escucho");
-            extras.putString("true","correcto");
-            intent.putExtras(extras);
-            startActivity(intent);
+            conseguido();
         }
         else{
             fail++;
@@ -161,5 +157,49 @@ public class Escucho1 extends AppCompatActivity {
                 startActivity(intent);
             }
         }
+    }
+    public void conseguido(){
+        new Communication<Integer>(this){
+            @Override
+            protected Integer work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Integer codigo=data.postInfo(Integer.toString(EXTRA_USERID),Integer.toString(6));
+                return codigo;
+            }
+
+            @Override
+            protected void onFinish(Integer result) {
+                System.out.println(result);
+                addCalificacion();
+
+            }
+        }.execute();
+    }
+
+    public void addCalificacion() {
+        new Communication<Integer>(this) {
+            @Override
+            protected Integer work() throws Exception {
+                ObtenerDatos data = new ObtenerDatos();
+                Integer codigo = data.postResultados("true");
+                return codigo;
+            }
+
+            @Override
+            protected void onFinish(Integer result) {
+                System.out.println(result);
+                correcto();
+            }
+        }.execute();
+    }
+
+    public void correcto(){
+        Intent intent= new Intent(this,CorrectoActivity.class);
+        Bundle extras=new Bundle();
+        extras.putString("username",EXTRA_LOGIN);
+        extras.putString("opcion","escucho");
+        extras.putString("true","correcto");
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 }

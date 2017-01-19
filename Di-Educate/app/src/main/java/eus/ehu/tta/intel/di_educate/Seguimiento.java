@@ -16,8 +16,9 @@ import Data.Resultados;
 
 public class Seguimiento extends AppCompatActivity {
 
-    public final static String EXTRA_OPTION= "";
-    public final static int EXTRA_USERID= 15;
+    private String EXTRA_LOGIN= "";
+    private String EXTRA_OPTION= "";
+    public final static int EXTRA_USERID= 16;
     private ArrayList<String> resultados=null;
 
     @Override
@@ -25,6 +26,9 @@ public class Seguimiento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seguimiento);
 
+        Bundle extras=getIntent().getExtras();
+        EXTRA_OPTION=extras.getString("opcion");
+        EXTRA_LOGIN=extras.getString("username");
         //CONSEGUIR USERID
 
         PlayGifView pGif = (PlayGifView) findViewById(R.id.seguimiento);
@@ -45,7 +49,6 @@ public class Seguimiento extends AppCompatActivity {
 
             @Override
             protected void onFinish(Resultados result) {
-
                 resultados=result.getResultados();
                 mostrarResultados();
             }
@@ -53,8 +56,7 @@ public class Seguimiento extends AppCompatActivity {
     }
 
     public void mostrarResultados(){
-        Intent intent =getIntent();
-        String opcion=intent.getStringExtra(EXTRA_OPTION);
+
 
         TextView texto1=(TextView)findViewById(R.id.seg1);
         TextView texto2=(TextView)findViewById(R.id.seg2);
@@ -62,7 +64,7 @@ public class Seguimiento extends AppCompatActivity {
         String aprobado="COMPLETADO";
         String no_aprobado="INCOMPLETO";
 
-        switch(opcion){
+        switch(EXTRA_OPTION){
             case "leoleo":
                 if(resultados.get(0).equals("true")){
                     texto1.setText("Leo Leo 1: "+aprobado);
@@ -122,21 +124,9 @@ public class Seguimiento extends AppCompatActivity {
     }
 
     public void volver(View v){
-        if(EXTRA_OPTION.equals("leoleo")) {
-            Intent mainIntent1 = new Intent(this, SubMenuActivity.class);
-            mainIntent1.putExtra(SubMenuActivity.EXTRA_OPTION, "leoleo");
-            startActivity(mainIntent1);
-        }
-        else if(EXTRA_OPTION.equals("juego")) {
-            Intent mainIntent2 = new Intent(this, SubMenuActivity.class);
-            mainIntent2.putExtra(SubMenuActivity.EXTRA_OPTION, "juego");
-            startActivity(mainIntent2);
-        }
-        else if(EXTRA_OPTION.equals("escucho")) {
-            Intent mainIntent3 = new Intent(this, SubMenuActivity.class);
-            mainIntent3.putExtra(SubMenuActivity.EXTRA_OPTION, "escucho");
-            startActivity(mainIntent3);
-        }
+        Intent intent= new Intent(this,MenuActivity.class);
+        intent.putExtra(MenuActivity.EXTRA_LOGIN,EXTRA_LOGIN);
+        startActivity(intent);
     }
 
 }

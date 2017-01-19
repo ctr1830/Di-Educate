@@ -19,6 +19,7 @@ import Data.Respuestas;
 
 public class Escucho2 extends AppCompatActivity {
 
+    public final static int EXTRA_USERID= 16;
     private static int fail=0;
     private static int stage=0;
     private ArrayList<String> audio=null;
@@ -109,13 +110,7 @@ public class Escucho2 extends AppCompatActivity {
         }
         else if (texto.getText().toString().equals(respuesta.get(2))){
             fail=0;
-            //Conseguido
-            Intent intent= new Intent(this,CorrectoActivity.class);
-            Bundle extras=new Bundle();
-            extras.putString("opcion","escucho");
-            extras.putString("true","correcto");
-            intent.putExtras(extras);
-            startActivity(intent);
+            conseguido();
         }
         else{
             fail++;
@@ -140,5 +135,48 @@ public class Escucho2 extends AppCompatActivity {
             }
         }
 
+    }
+    public void conseguido(){
+        new Communication<Integer>(this){
+            @Override
+            protected Integer work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Integer codigo=data.postInfo(Integer.toString(EXTRA_USERID),Integer.toString(7));
+                return codigo;
+            }
+
+            @Override
+            protected void onFinish(Integer result) {
+                System.out.println(result);
+                addCalificacion();
+
+            }
+        }.execute();
+    }
+
+    public void addCalificacion() {
+        new Communication<Integer>(this) {
+            @Override
+            protected Integer work() throws Exception {
+                ObtenerDatos data = new ObtenerDatos();
+                Integer codigo = data.postResultados("true");
+                return codigo;
+            }
+
+            @Override
+            protected void onFinish(Integer result) {
+                System.out.println(result);
+                correcto();
+            }
+        }.execute();
+    }
+
+    public void correcto() {
+        Intent intent = new Intent(this, CorrectoActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("opcion", "escucho");
+        extras.putString("true", "correcto");
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 }

@@ -18,6 +18,7 @@ import Data.Respuestas;
 
 public class LeoLeo2 extends AppCompatActivity {
 
+    public final static int EXTRA_USERID= 16;
     private static String boton;
     private static int fail=0;
     private static int stage=0;
@@ -142,12 +143,7 @@ public class LeoLeo2 extends AppCompatActivity {
             fail=0;
             boton=null;
             //Conseguido
-            Intent intent= new Intent(this,CorrectoActivity.class);
-            Bundle extras=new Bundle();
-            extras.putString("opcion","leoleo");
-            extras.putString("true","correcto");
-            intent.putExtras(extras);
-            startActivity(intent);
+            conseguido();
         }
         else{
             fail++;
@@ -171,5 +167,49 @@ public class LeoLeo2 extends AppCompatActivity {
                 startActivity(intent);
             }
         }
+    }
+
+    public void conseguido(){
+        new Communication<Integer>(this){
+            @Override
+            protected Integer work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Integer codigo=data.postInfo(Integer.toString(EXTRA_USERID),Integer.toString(2));
+                return codigo;
+            }
+
+            @Override
+            protected void onFinish(Integer result) {
+                System.out.println(result);
+                addCalificacion();
+
+            }
+        }.execute();
+    }
+
+    public void addCalificacion() {
+        new Communication<Integer>(this) {
+            @Override
+            protected Integer work() throws Exception {
+                ObtenerDatos data = new ObtenerDatos();
+                Integer codigo = data.postResultados("true");
+                return codigo;
+            }
+
+            @Override
+            protected void onFinish(Integer result) {
+                System.out.println(result);
+                correcto();
+            }
+        }.execute();
+    }
+
+    public void correcto(){
+        Intent intent= new Intent(this,CorrectoActivity.class);
+        Bundle extras=new Bundle();
+        extras.putString("opcion","leoleo");
+        extras.putString("true","correcto");
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 }

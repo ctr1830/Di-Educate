@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Resultados {
 
+    private boolean result=false;
     private ArrayList<String> resultados =new ArrayList<>();
 
     public ArrayList<String> getResultados() {

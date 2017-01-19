@@ -22,19 +22,19 @@ public class MenuActivity extends AppCompatActivity {
 
     public void leoleo(View v){
         Intent intent= new Intent(this,SubMenuActivity.class);
-        //intent.putExtra(SubMenuActivity.EXTRA_USERNAME,EXTRA_LOGIN);
+        intent.putExtra(SubMenuActivity.EXTRA_USERNAME,EXTRA_LOGIN);
         intent.putExtra(SubMenuActivity.EXTRA_OPTION,"leoleo");
         startActivity(intent);
     }
     public void juego(View v){
         Intent intent= new Intent(this,SubMenuActivity.class);
-        //intent.putExtra(SubMenuActivity.EXTRA_USERNAME,EXTRA_LOGIN);
+        intent.putExtra(SubMenuActivity.EXTRA_USERNAME,EXTRA_LOGIN);
         intent.putExtra(SubMenuActivity.EXTRA_OPTION,"juego");
         startActivity(intent);
     }
     public void escucho(View v){
         Intent intent= new Intent(this,SubMenuActivity.class);
-        //intent.putExtra(SubMenuActivity.EXTRA_USERNAME,EXTRA_LOGIN);
+        intent.putExtra(SubMenuActivity.EXTRA_USERNAME,EXTRA_LOGIN);
         intent.putExtra(SubMenuActivity.EXTRA_OPTION,"escucho");
         startActivity(intent);
     }

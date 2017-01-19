@@ -94,4 +94,24 @@ public class ObtenerDatos {
         }
         return resultados;
     }
+
+    public int postInfo(String userid,String ejercicio) throws Exception{
+        JSONObject json=new JSONObject();
+        JSONObject info=new JSONObject();
+
+        json.put("username",userid);
+        json.put("ejercicio",ejercicio);
+        info.put("info",json);
+
+        return cliente.postJson(json,"addInfo");
+    }
+    public int postResultados(String aprobado) throws Exception{
+        JSONObject json=new JSONObject();
+        JSONObject object=new JSONObject();
+
+        json.put("aprobado",aprobado);
+        object.put("aprobado",aprobado);
+
+        return cliente.postJson(json,"addCalificaciones");
+    }
 }
