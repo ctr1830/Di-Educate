@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import Business.Communication;
 import Business.ObtenerDatos;
+import Data.Enunciado;
 import Data.Respuestas;
 
 public class LeoLeo3 extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class LeoLeo3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leo_leo3);
 
+        getEnunciado();
         getRespuestas();
 
         Button button1=(Button)this.findViewById(R.id.bl31);
@@ -34,9 +36,25 @@ public class LeoLeo3 extends AppCompatActivity {
         button2.setText("lagarto");
         Button button3=(Button)this.findViewById(R.id.bl33);
         button3.setText("tetera");
-        //TextView textLogin=(TextView)findViewById(R.id.palabra);
-        //textLogin.setText(respuestas.get(0).toUpperCase());
 
+    }
+
+    public void getEnunciado(){
+        new Communication<Enunciado>(this){
+            @Override
+            protected Enunciado work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Enunciado texto= data.getEnunciados(3);
+                return texto;
+            }
+
+            @Override
+            protected void onFinish(Enunciado result) {
+
+                TextView texto=(TextView)findViewById(R.id.l_enunciado);
+                texto.setText(result.getEnunciados().get(0));
+            }
+        }.execute();
     }
 
     public void getRespuestas(){

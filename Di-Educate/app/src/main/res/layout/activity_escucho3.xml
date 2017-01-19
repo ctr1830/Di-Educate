@@ -12,15 +12,6 @@
     tools:context="eus.ehu.tta.intel.di_educate.Escucho3">
 
     <ImageButton
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        app:srcCompat="@drawable/audio"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/audio"
-        android:onClick="audio"/>
-
-    <ImageButton
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@android:drawable/btn_star_big_on"
@@ -53,4 +44,14 @@
         android:layout_marginTop="32dp"
         android:id="@+id/button8"
         android:onClick="comprobar"/>
+
+    <ImageButton
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:srcCompat="@drawable/audio"
+        android:id="@+id/audio"
+        android:onClick="audio"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

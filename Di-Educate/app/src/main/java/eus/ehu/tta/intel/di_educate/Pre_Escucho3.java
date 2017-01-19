@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import Business.Communication;
 import Business.ObtenerDatos;
 import Data.Audio;
+import Data.Enunciado;
 
 public class Pre_Escucho3 extends AppCompatActivity {
     private ArrayList<String> audio=null;
@@ -22,7 +24,26 @@ public class Pre_Escucho3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preescucho3);
 
+        getEnunciado();
         getAudio();
+    }
+
+    public void getEnunciado(){
+        new Communication<Enunciado>(this){
+            @Override
+            protected Enunciado work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Enunciado texto= data.getEnunciados(8);
+                return texto;
+            }
+
+            @Override
+            protected void onFinish(Enunciado result) {
+
+                TextView texto=(TextView)findViewById(R.id.enunciado);
+                texto.setText(result.getEnunciados().get(0));
+            }
+        }.execute();
     }
 
     public void getAudio(){

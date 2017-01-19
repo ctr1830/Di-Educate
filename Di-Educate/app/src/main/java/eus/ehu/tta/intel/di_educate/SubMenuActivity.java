@@ -20,7 +20,6 @@ public class SubMenuActivity extends AppCompatActivity {
         String opcion=intent.getStringExtra(EXTRA_OPTION);
 
          submenu(opcion);
-
     }
 
     public void submenu(String opcion){
@@ -91,8 +90,6 @@ public class SubMenuActivity extends AppCompatActivity {
                 });
                 media_escucho.start();
                 break;
-
-
         }
     }
 
@@ -128,12 +125,21 @@ public class SubMenuActivity extends AppCompatActivity {
         Intent intent= new Intent(this,Pre_Escucho3.class);
         startActivity(intent);
     }
-/*
-    @Override
-    protected void onDestroy() {
-        media.stop();
-        media.release();
-        super.onDestroy();
+
+    public void seguimiento1(View v){
+        Intent intent= new Intent(this,Seguimiento.class);
+        intent.putExtra(Seguimiento.EXTRA_OPTION,"leoleo");
+        startActivity(intent);
     }
-*/
+    public void seguimiento2(View v){
+        Intent intent= new Intent(this,Seguimiento.class);
+        intent.putExtra(Seguimiento.EXTRA_OPTION,"juego");
+        startActivity(intent);
+    }
+    public void seguimiento3(View v){
+        Intent intent= new Intent(this,Seguimiento.class);
+        intent.putExtra(Seguimiento.EXTRA_OPTION,"escucho");
+        startActivity(intent);
+    }
+
 }

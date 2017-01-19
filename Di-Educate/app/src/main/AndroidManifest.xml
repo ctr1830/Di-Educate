@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eus.ehu.tta.intel.di_educate">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -16,42 +17,43 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="eus.ehu.tta.intel.di_educate.SplashScreen">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="eus.ehu.tta.intel.di_educate.MainActivity" />
+        <activity android:name=".MainActivity" />
         <activity
-            android:name="eus.ehu.tta.intel.di_educate.Login"
+            android:name=".Login"
             android:label="@string/alogin" />
         <activity
-            android:name="eus.ehu.tta.intel.di_educate.NewAccount"
+            android:name=".NewAccount"
             android:label="@string/anewaccount" />
         <activity
-            android:name="eus.ehu.tta.intel.di_educate.MenuActivity"
+            android:name=".MenuActivity"
             android:label="@string/amenu" />
-        <activity android:name="eus.ehu.tta.intel.di_educate.SubMenuActivity" />
+        <activity android:name=".SubMenuActivity" />
         <activity
-            android:name="eus.ehu.tta.intel.di_educate.LeoLeo1"
+            android:name=".LeoLeo1"
             android:label="@string/bleoleo1" />
         <activity
-            android:name="eus.ehu.tta.intel.di_educate.LeoLeo2"
+            android:name=".LeoLeo2"
             android:label="@string/bleoleo2" />
         <activity
-            android:name="eus.ehu.tta.intel.di_educate.LeoLeo3"
+            android:name=".LeoLeo3"
             android:label="@string/bleoleo3" />
         <activity
-            android:name="eus.ehu.tta.intel.di_educate.CorrectoActivity"
+            android:name=".CorrectoActivity"
             android:label="@string/app_name" />
-        <activity android:name="eus.ehu.tta.intel.di_educate.Juego1" />
-        <activity android:name="eus.ehu.tta.intel.di_educate.Juego2" />
-        <activity android:name="eus.ehu.tta.intel.di_educate.Escucho1" />
-        <activity android:name="eus.ehu.tta.intel.di_educate.Escucho2" />
-        <activity android:name="eus.ehu.tta.intel.di_educate.Escucho3" />
-        <activity android:name="eus.ehu.tta.intel.di_educate.Pre_Escucho3"></activity>
+        <activity android:name=".Juego1" />
+        <activity android:name=".Juego2" />
+        <activity android:name=".Escucho1" />
+        <activity android:name=".Escucho2" />
+        <activity android:name=".Escucho3" />
+        <activity android:name=".Pre_Escucho3" />
+        <activity android:name=".Seguimiento"></activity>
     </application>
 
 </manifest>

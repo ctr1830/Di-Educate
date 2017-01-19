@@ -10,15 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="eus.ehu.tta.intel.di_educate.Pre_Escucho3">
 
-    <ImageButton
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:src="@drawable/audio"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/imageButton3"
-        android:onClick="audio"/>
-
     <Button
         android:text="@string/badelante"
         android:layout_width="wrap_content"
@@ -28,4 +19,24 @@
         android:layout_below="@+id/imageButton3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enunciado"
+        android:fontFamily="sans-serif"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/audio"
+        android:id="@+id/imageButton3"
+        android:onClick="audio"
+        android:layout_below="@+id/enunciado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
 </RelativeLayout>

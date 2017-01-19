@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import Data.Audio;
+import Data.Enunciado;
 import Data.Imagenes;
 import Data.Respuestas;
 
@@ -63,5 +64,19 @@ public class ObtenerDatos {
             System.out.println(urls.getAudios().get(i));
         }
         return urls;
+    }
+
+    public Enunciado getEnunciados(int id) throws Exception {
+        Enunciado texto = new Enunciado();
+
+        JSONObject json;
+        json = cliente.getJson("requestEnunciados?ejercicio=" + id);
+        JSONArray array = json.getJSONArray("textoEnunciado");
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject item = array.getJSONObject(i);
+            texto.setEnunciados(item.getString("textoEnunciado"));
+            System.out.println(texto.getEnunciados().get(i));
+        }
+        return texto;
     }
 }

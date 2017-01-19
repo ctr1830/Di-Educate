@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import Business.Communication;
 import Business.ObtenerDatos;
 import Data.Audio;
+import Data.Enunciado;
 import Data.Imagenes;
 import Data.Respuestas;
 
@@ -195,8 +197,6 @@ public class Escucho3 extends AppCompatActivity {
             boton=null;
             getImagenes(2);
             getImagenes(3);
-            //imagen2.setContentDescription("guau");
-            //imagen1.setContentDescription("plash");
         }
         else if((boton.equals(respuesta.get(1)))&&(times==1)){
             fail=0;
@@ -205,8 +205,6 @@ public class Escucho3 extends AppCompatActivity {
             boton=null;
             getImagenes(4);
             getImagenes(5);
-            //imagen1.setContentDescription("run");
-            //imagen2.setContentDescription("ring");
         }
         else if((boton.equals(respuesta.get(2)))&&(times==2)){
             fail=0;
@@ -215,8 +213,6 @@ public class Escucho3 extends AppCompatActivity {
             boton=null;
             getImagenes(2);
             getImagenes(6);
-            //imagen1.setContentDescription("guau");
-            //imagen2.setContentDescription("muack");
         }
         else if((boton.equals(respuesta.get(3)))&&(times==3)){
             fail=0;
@@ -225,8 +221,6 @@ public class Escucho3 extends AppCompatActivity {
             boton=null;
             getImagenes(7);
             getImagenes(5);
-            //imagen1.setContentDescription("boing");
-            //imagen2.setContentDescription("ring");
         }
         else if((boton.equals(respuesta.get(4)))&&(times==4)){
             fail=0;
@@ -235,8 +229,6 @@ public class Escucho3 extends AppCompatActivity {
             boton=null;
             getImagenes(5);
             getImagenes(1);
-            //imagen2.setContentDescription("ring");
-            //imagen1.setContentDescription("mu");
         }
         else if((boton.equals(respuesta.get(5)))&&(times==5)){
             fail=0;
