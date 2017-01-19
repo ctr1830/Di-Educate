@@ -17,40 +17,45 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/seguimiento" />
 
-    <TextView
-        android:text="TextView"
+    <Button
+        android:text="@string/bvolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/seg3"
-        android:layout_above="@+id/seguimiento"
-        android:layout_alignLeft="@+id/seg2"
-        android:layout_alignStart="@+id/seg2"
-        android:layout_marginBottom="51dp" />
+        android:id="@+id/button11"
+        android:onClick="volver"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seg2"
-        android:layout_above="@+id/seg3"
-        android:layout_alignLeft="@+id/seg1"
-        android:layout_alignStart="@+id/seg1" />
-
-    <TextView
-        android:text="TextView"
+        android:text=""
+        android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/seg1"
         android:layout_above="@+id/seg2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp" />
 
-    <Button
-        android:text="Button"
+    <TextView
+        android:text=""
+        android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button11"
-        android:layout_above="@+id/seg1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:onClick="volver"/>
+        android:id="@+id/seg3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/seg2"
+        android:layout_alignStart="@+id/seg2"
+        android:layout_marginBottom="106dp" />
+
+    <TextView
+        android:text=""
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seg2"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/seg3"
+        android:layout_alignLeft="@+id/seg1"
+        android:layout_alignStart="@+id/seg1" />
 </RelativeLayout>

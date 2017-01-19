@@ -15,6 +15,7 @@ import Data.Audio;
 import Data.Enunciado;
 import Data.Imagenes;
 import Data.Respuestas;
+import Data.Resultados;
 
 /**
  * Created by cristian on 14/01/17.
@@ -78,5 +79,19 @@ public class ObtenerDatos {
             System.out.println(texto.getEnunciados().get(i));
         }
         return texto;
+    }
+
+    public Resultados getResultados(int id) throws Exception {
+        Resultados resultados = new Resultados();
+
+        JSONObject json;
+        json = cliente.getJson("requestCalifications?userid=" + id);
+        JSONArray array = json.getJSONArray("resultados");
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject item = array.getJSONObject(i);
+            resultados.setResultados(item.getString("aprobado"));
+            System.out.println(resultados.getResultados().get(i));
+        }
+        return resultados;
     }
 }
