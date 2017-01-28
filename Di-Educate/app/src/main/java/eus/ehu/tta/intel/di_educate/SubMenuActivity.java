@@ -98,41 +98,49 @@ public class SubMenuActivity extends AppCompatActivity {
     public void leoleo1(View v){
         Intent intent= new Intent(this,LeoLeo1.class);
         intent.putExtra(LeoLeo1.EXTRA_USERID,USERID);
+        intent.putExtra(LeoLeo1.EXTRA_USERNAME,EXTRA_USERNAME);
         startActivity(intent);
     }
     public void leoleo2(View v){
         Intent intent= new Intent(this,LeoLeo2.class);
         intent.putExtra(LeoLeo2.EXTRA_USERID,USERID);
+        intent.putExtra(LeoLeo2.EXTRA_USERNAME,EXTRA_USERNAME);
         startActivity(intent);
     }
     public void leoleo3(View v){
         Intent intent= new Intent(this,LeoLeo3.class);
         intent.putExtra(LeoLeo3.EXTRA_USERID,USERID);
+        intent.putExtra(LeoLeo3.EXTRA_USERNAME,EXTRA_USERNAME);
         startActivity(intent);
     }
     public void juego1(View v){
         Intent intent= new Intent(this,Juego1.class);
         intent.putExtra(Juego1.EXTRA_USERID,USERID);
+        intent.putExtra(Juego1.EXTRA_USERNAME,EXTRA_USERNAME);
         startActivity(intent);
     }
     public void juego2(View v){
         Intent intent= new Intent(this,Juego2.class);
         intent.putExtra(Juego2.EXTRA_USERID,USERID);
+        intent.putExtra(Juego2.EXTRA_USERNAME,EXTRA_USERNAME);
         startActivity(intent);
     }
     public void escucho1(View v){
         Intent intent= new Intent(this,Escucho1.class);
         intent.putExtra(Escucho1.EXTRA_USERID,USERID);
+        intent.putExtra(Escucho1.EXTRA_USERNAME,EXTRA_USERNAME);
         startActivity(intent);
     }
     public void escucho2(View v){
         Intent intent= new Intent(this,Escucho2.class);
         intent.putExtra(Escucho2.EXTRA_USERID,USERID);
+        intent.putExtra(Escucho2.EXTRA_USERNAME,EXTRA_USERNAME);
         startActivity(intent);
     }
     public void escucho3(View v){
         Intent intent= new Intent(this,Pre_Escucho3.class);
-        intent.putExtra(Escucho3.EXTRA_USERID,USERID);
+        intent.putExtra(Pre_Escucho3.EXTRA_USERID,USERID);
+        intent.putExtra(Pre_Escucho3.EXTRA_USERNAME,EXTRA_USERNAME);
         startActivity(intent);
     }
 

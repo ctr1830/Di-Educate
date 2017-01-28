@@ -18,6 +18,8 @@ import Data.Respuestas;
 public class Juego2 extends AppCompatActivity {
 
     public final static String EXTRA_USERID= "null";
+    public final static String EXTRA_USERNAME= "null";
+    private static String name;
     private static String USERID= "null";
     private static String boton;
     private static int fail=0;
@@ -30,6 +32,7 @@ public class Juego2 extends AppCompatActivity {
 
         Intent intent=getIntent();
         USERID=intent.getStringExtra(EXTRA_USERID);
+        name=intent.getStringExtra(EXTRA_USERNAME);
 
         getRespuestas();
 
@@ -163,6 +166,8 @@ public class Juego2 extends AppCompatActivity {
         Bundle extras=new Bundle();
         extras.putString("opcion","juego");
         extras.putString("true","correcto");
+        extras.putString("username",name);
+        extras.putString("userid",USERID);
         intent.putExtras(extras);
         startActivity(intent);
     }

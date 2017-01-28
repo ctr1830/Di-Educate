@@ -20,6 +20,8 @@ import Data.Respuestas;
 public class Escucho2 extends AppCompatActivity {
 
     public final static String EXTRA_USERID= "null";
+    public final static String EXTRA_USERNAME= "null";
+    private static String name;
     private static String USERID="null";
     private static int fail=0;
     private static int stage=0;
@@ -33,6 +35,7 @@ public class Escucho2 extends AppCompatActivity {
 
         Intent intent=getIntent();
         USERID=intent.getStringExtra(EXTRA_USERID);
+        name=intent.getStringExtra(EXTRA_USERNAME);
 
         getRespuesta();
         getAudio();
@@ -180,6 +183,8 @@ public class Escucho2 extends AppCompatActivity {
         Bundle extras = new Bundle();
         extras.putString("opcion", "escucho");
         extras.putString("true", "correcto");
+        extras.putString("username",name);
+        extras.putString("userid",USERID);
         intent.putExtras(extras);
         startActivity(intent);
     }

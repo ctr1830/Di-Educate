@@ -25,6 +25,8 @@ public class LeoLeo1 extends AppCompatActivity {
     private ArrayList<String> imagenes=null;
     private ArrayList<String> respuesta=null;
     public final static String EXTRA_USERID= "null";
+    public final static String EXTRA_USERNAME= "null";
+    private static String name;
     private static String USERID= "null";
     private static String boton1;
     private static String boton2;
@@ -37,6 +39,7 @@ public class LeoLeo1 extends AppCompatActivity {
 
         Intent intent=getIntent();
         USERID=intent.getStringExtra(EXTRA_USERID);
+        name=intent.getStringExtra(EXTRA_USERNAME);
 
         getRespuestas();
         getImagenes(0);
@@ -244,6 +247,8 @@ public class LeoLeo1 extends AppCompatActivity {
         Bundle extras=new Bundle();
         extras.putString("opcion","leoleo");
         extras.putString("true","correcto");
+        extras.putString("userid",USERID);
+        extras.putString("username",name);
         intent.putExtras(extras);
         startActivity(intent);
     }

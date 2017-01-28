@@ -9,6 +9,8 @@ import android.widget.TextView;
 public class MenuActivity extends AppCompatActivity {
     public final static String EXTRA_LOGIN= "login";
     public static String EXTRA_USERID= "userid";
+    private static String username;
+    private static String userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,10 +18,12 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Intent intent =getIntent();
-        String usuario=intent.getStringExtra(EXTRA_LOGIN);
-        EXTRA_USERID=intent.getStringExtra(EXTRA_USERID);
+        username=intent.getStringExtra(EXTRA_LOGIN);
+        userid=intent.getStringExtra(EXTRA_USERID);
         TextView textLogin=(TextView)findViewById(R.id.bienvenida);
-        textLogin.setText("Bienvenido ".concat(usuario));
+        textLogin.setText("Bienvenido ".concat(username));
+
+        System.out.println("USERID "+userid);
     }
 
     public void leoleo(View v){

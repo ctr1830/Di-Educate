@@ -18,11 +18,19 @@ import Data.Enunciado;
 public class Pre_Escucho3 extends AppCompatActivity {
     private ArrayList<String> audio=null;
     private MediaPlayer media= new MediaPlayer();
+    public final static String EXTRA_USERID= "null";
+    public final static String EXTRA_USERNAME= "null";
+    private static String name;
+    private static String USERID= "null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preescucho3);
+
+        Intent intent=getIntent();
+        USERID=intent.getStringExtra(EXTRA_USERID);
+        name=intent.getStringExtra(EXTRA_USERNAME);
 
         getEnunciado();
         getAudio();
@@ -63,9 +71,14 @@ public class Pre_Escucho3 extends AppCompatActivity {
     }
     public void adelante(View v){
         Intent intent= new Intent(this,Escucho3.class);
+        Bundle extras=new Bundle();
         media.stop();
         media.release();
         intent.putStringArrayListExtra("audio",audio);
+
+        extras.putString("username",name);
+        extras.putString("userid",USERID);
+        intent.putExtras(extras);
         startActivity(intent);
     }
     public void audio(View v)throws IOException{

@@ -56,6 +56,9 @@ public class CorrectoActivity extends AppCompatActivity {
     public void volverCorrecto(View v){
 
 
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+
         if(opcion.equals("leoleo")) {
             Intent mainIntent1 = new Intent(this, SubMenuActivity.class);
             mainIntent1.putExtra(SubMenuActivity.EXTRA_OPTION, "leoleo");
