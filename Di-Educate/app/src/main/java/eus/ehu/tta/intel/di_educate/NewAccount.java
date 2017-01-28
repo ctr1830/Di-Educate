@@ -18,9 +18,19 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 
+import Business.Communication;
+import Business.ObtenerDatos;
+
 public class NewAccount extends AppCompatActivity {
     public final static int PICTURE_REQUEST_CODE=1;
-    public final static int READ_REQUEST_CODE=2;
+    private String respuesta;
+    private String name="null";
+    private String surname="null";
+    private String age="null";
+    private String hobbies="null";
+    private String picture="null";
+    private String username="null";
+    private String password="null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +48,10 @@ public class NewAccount extends AppCompatActivity {
                 File dir= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
                 try {
-                    File file = File.createTempFile("tta", ".jpg", dir);
+                    File file = File.createTempFile("di-educate", ".jpg", dir);
                     Uri pictureUri = Uri.fromFile(file);
+                    picture=pictureUri.toString();
+                    picture=picture.substring(24);
                     intent.putExtra(MediaStore.EXTRA_OUTPUT,pictureUri);
                     startActivityForResult(intent,PICTURE_REQUEST_CODE);
 
@@ -59,23 +71,70 @@ public class NewAccount extends AppCompatActivity {
 
     public void createAccount(View v){
 
-        //Mandar al servidor los datos
-        EditText name=(EditText)findViewById(R.id.nombre);
+        EditText nombre=(EditText)findViewById(R.id.nombre);
+        name=nombre.getText().toString();
         EditText apellidos=(EditText)findViewById(R.id.apellidos);
+        surname=apellidos.getText().toString();
         EditText edad=(EditText)findViewById(R.id.edad);
-        EditText username=(EditText)findViewById(R.id.nombre_usuario);
-        EditText password=(EditText)findViewById(R.id.password);
+        age=edad.getText().toString();
+        EditText aficiones=(EditText)findViewById(R.id.aficiones);
+        hobbies=aficiones.getText().toString();
+        EditText user=(EditText)findViewById(R.id.nombre_usuario);
+        username=user.getText().toString();
+        EditText pass=(EditText)findViewById(R.id.password);
+        password=pass.getText().toString();
 
-
-
-        if(isEmpty(name)|| isEmpty(apellidos) || isEmpty(edad) || isEmpty(username) || isEmpty(password))
+        if(isEmpty(nombre)|| isEmpty(apellidos) || isEmpty(edad) || isEmpty(user) || isEmpty(pass))
         {
             Toast.makeText(this,R.string.fill, Toast.LENGTH_SHORT).show();
         }
         else {
-            Intent intent = new Intent(this, Login.class);
-            startActivity(intent);
+            System.out.println(picture);
+            mandarDatos();
         }
+    }
+
+    public void mandarDatos(){
+
+        new Communication<Integer>(this) {
+            @Override
+            protected Integer work() throws Exception {
+
+                ObtenerDatos data = new ObtenerDatos();
+                respuesta = data.postUser(name,surname,age,picture,hobbies,username,password);
+
+                if(respuesta.equals("Usuario añadido")){
+                    return 200;
+                }
+                else if(respuesta.equals("Nombre de usuario existente. No se añadió a la base de datos")){
+                    return 250;
+                }
+                else{
+                    return 500;
+                }
+            }
+
+            @Override
+            protected void onFinish(Integer result) {
+                System.out.println(result);
+                if(result==200){
+                    Intent intent = new Intent(NewAccount.this, Login.class);
+                    Toast.makeText(NewAccount.this,respuesta,Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                else if(result==250){
+                    Intent intent = new Intent(NewAccount.this, Login.class);
+                    Toast.makeText(NewAccount.this,respuesta,Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(NewAccount.this,"Error al crear al usuario",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(NewAccount.this, Login.class);
+                    startActivity(intent);
+                }
+
+            }
+        }.execute();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -83,62 +142,10 @@ public class NewAccount extends AppCompatActivity {
             return;
         switch(requestCode){
             case PICTURE_REQUEST_CODE:
-                Toast.makeText(this,"foto adquirida",Toast.LENGTH_SHORT).show();
-                //subirFichero(data.getData());
-                break;
-            case READ_REQUEST_CODE:
-                Uri uri=null;
-                if(data != null){
-                    uri=data.getData();
-                    dumpMetaData(uri);
-                }
+                Toast.makeText(this,picture,Toast.LENGTH_SHORT).show();
                 break;
         }
 
     }
 
-    public void subirFichero(View v){
-
-        int miversion = android.os.Build.VERSION.SDK_INT;
-        if (miversion >= Build.VERSION_CODES.KITKAT) {
-            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-            intent.addCategory(Intent.CATEGORY_OPENABLE);
-            intent.setType("*/*");
-            startActivityForResult(intent, READ_REQUEST_CODE);
-        }
-        else{
-            Toast.makeText(this,R.string.no_api,Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void dumpMetaData(Uri uri){
-
-        Cursor cursor = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            cursor =NewAccount.this.getContentResolver()
-                    .query(uri, null, null, null, null, null);
-        }
-        else {
-            Toast.makeText(this,R.string.no_api,Toast.LENGTH_SHORT).show();
-        }
-        try {
-            if (cursor != null && cursor.moveToFirst()) {
-
-                String displayName = cursor.getString(
-                        cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-                int sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE);
-                String size = null;
-                if (!cursor.isNull(sizeIndex)) {
-
-                    size = cursor.getString(sizeIndex);
-                    Toast.makeText(this,displayName+" "+ size + " bytes",Toast.LENGTH_SHORT).show();
-                } else {
-                    size = "Unknown";
-                    Toast.makeText(this,displayName,Toast.LENGTH_SHORT).show();
-                }
-            }
-        } finally {
-            cursor.close();
-        }
-    }
 }

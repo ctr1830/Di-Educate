@@ -54,4 +54,8 @@ public class MenuActivity extends AppCompatActivity {
         intent.putExtras(extras);
         startActivity(intent);
     }
+    public void volver(View v){
+        Intent intent= new Intent(this, Login.class);
+        startActivity(intent);
+    }
 }

@@ -121,8 +121,24 @@ public class ObtenerDatos {
 
         json.put("username",username);
         json.put("password",pass);
-        object.put("usuario","usuario");
+        object.put("usuario",json);
 
         return cliente.postUserJson(json,"requestUser");
+    }
+
+    public String postUser (String name, String surname, String age, String hobbies, String picture, String username, String pass) throws Exception{
+        JSONObject json=new JSONObject();
+        JSONObject object=new JSONObject();
+
+        json.put("nombre",name);
+        json.put("apellidos",surname);
+        json.put("edad",age);
+        json.put("foto",picture);
+        json.put("aficiones",hobbies);
+        json.put("username",username);
+        json.put("password",pass);
+        object.put("usuario",json);
+
+        return cliente.postUserJson(json,"addUsuario");
     }
 }
