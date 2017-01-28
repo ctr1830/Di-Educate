@@ -18,7 +18,8 @@ import Data.Respuestas;
 
 public class LeoLeo2 extends AppCompatActivity {
 
-    public final static int EXTRA_USERID= 16;
+    public final static String EXTRA_USERID= "null";
+    private static String USERID= "null";
     private static String boton;
     private static int fail=0;
     private static int stage=0;
@@ -33,6 +34,8 @@ public class LeoLeo2 extends AppCompatActivity {
         getRespuestas();
         getAudio();
 
+        Intent intent=getIntent();
+        USERID=intent.getStringExtra(EXTRA_USERID);
         Button button1=(Button)this.findViewById(R.id.bl21);
         button1.setText("melon");
         Button button2=(Button)this.findViewById(R.id.bl22);
@@ -174,7 +177,7 @@ public class LeoLeo2 extends AppCompatActivity {
             @Override
             protected Integer work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Integer codigo=data.postInfo(Integer.toString(EXTRA_USERID),Integer.toString(2));
+                Integer codigo=data.postInfo(USERID,Integer.toString(2));
                 return codigo;
             }
 

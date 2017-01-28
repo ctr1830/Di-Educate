@@ -19,10 +19,11 @@ import Data.Respuestas;
 public class Escucho1 extends AppCompatActivity {
 
     public final static String EXTRA_LOGIN= "login";
+    private static String USERID="null";
     private static String boton;
     private static int stage=0;
     private static int fail=0;
-    public final static int EXTRA_USERID= 16;
+    public final static String EXTRA_USERID= "null";
     private ArrayList<String> audio=null;
     private ArrayList<String> respuesta=null;
 
@@ -30,6 +31,9 @@ public class Escucho1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escucho1);
+
+        Intent intent=getIntent();
+        USERID=intent.getStringExtra(EXTRA_USERID);
 
         getRespuestas();
         getAudio();
@@ -163,7 +167,7 @@ public class Escucho1 extends AppCompatActivity {
             @Override
             protected Integer work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Integer codigo=data.postInfo(Integer.toString(EXTRA_USERID),Integer.toString(6));
+                Integer codigo=data.postInfo(USERID ,Integer.toString(6));
                 return codigo;
             }
 

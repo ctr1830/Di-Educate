@@ -25,7 +25,8 @@ import Data.Respuestas;
 
 public class Escucho3 extends AppCompatActivity {
 
-    public final static int EXTRA_USERID= 16;
+    public final static String EXTRA_USERID= "null";
+    private static String USERID="null";
     private static String boton;
     private static int fail=0;
     private static int times=0;
@@ -41,6 +42,7 @@ public class Escucho3 extends AppCompatActivity {
 
         Intent intent =getIntent();
         audio=intent.getStringArrayListExtra("audio");
+        USERID=intent.getStringExtra(EXTRA_USERID);
 
         getRespuestas();
         getImagenes(1);
@@ -266,7 +268,7 @@ public class Escucho3 extends AppCompatActivity {
             @Override
             protected Integer work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Integer codigo=data.postInfo(Integer.toString(EXTRA_USERID),Integer.toString(8));
+                Integer codigo=data.postInfo(USERID,Integer.toString(8));
                 return codigo;
             }
 

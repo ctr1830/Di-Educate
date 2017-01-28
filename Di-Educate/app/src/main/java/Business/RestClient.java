@@ -1,5 +1,6 @@
 package Business;
 
+import android.net.http.HttpResponseCache;
 import android.util.Base64;
 
 import org.json.JSONException;
@@ -85,6 +86,35 @@ public class RestClient {
             pw.print(json.toString());
             pw.close();
             return conn.getResponseCode();
+        }
+        finally {
+            if(conn!=null){
+                conn.disconnect();
+            }
+        }
+    }
+
+    public String postUserJson (final JSONObject json, String path) throws IOException{
+        String alternative;
+        HttpURLConnection conn = null;
+        try{
+            conn=getConnection(path);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-type","application/json; charset=UTF-8");
+            PrintWriter pw= new PrintWriter(conn.getOutputStream());
+            pw.print(json.toString());
+            pw.close();
+            if(conn.getResponseCode()==200) {
+                BufferedReader br= new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String cadena = new String();
+                cadena=br.readLine();
+                br.close();
+                return cadena;
+            }
+            else{
+                alternative=Integer.toString(conn.getResponseCode())+";null";
+                return alternative;
+            }
         }
         finally {
             if(conn!=null){

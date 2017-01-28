@@ -20,7 +20,8 @@ public class LeoLeo3 extends AppCompatActivity {
     private static String boton;
     private static int fail=0;
     private ArrayList<String> respuestas=null;
-    public final static int EXTRA_USERID= 16;
+    public final static String EXTRA_USERID= "null";
+    private static String USERID= "null";
     private static ArrayList<String> array = new ArrayList<String>();
 
     @Override
@@ -31,6 +32,8 @@ public class LeoLeo3 extends AppCompatActivity {
         getEnunciado();
         getRespuestas();
 
+        Intent intent=getIntent();
+        USERID=intent.getStringExtra(EXTRA_USERID);
         Button button1=(Button)this.findViewById(R.id.bl31);
         button1.setText("tomate");
         Button button2=(Button)this.findViewById(R.id.bl32);
@@ -96,6 +99,11 @@ public class LeoLeo3 extends AppCompatActivity {
         if (boton==null){
             array.add("");
         }
+        if(array.size()!=3){
+            array.add("");
+            array.add("");
+            array.add("");
+        }
 
         if((respuestas.get(0).equals(array.get(0)))&&(respuestas.get(1).equals(array.get(1)))&&(respuestas.get(2).equals(array.get(2)))) {
             fail = 0;
@@ -156,7 +164,7 @@ public class LeoLeo3 extends AppCompatActivity {
             @Override
             protected Integer work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Integer codigo=data.postInfo(Integer.toString(EXTRA_USERID),Integer.toString(3));
+                Integer codigo=data.postInfo(USERID,Integer.toString(3));
                 return codigo;
             }
 

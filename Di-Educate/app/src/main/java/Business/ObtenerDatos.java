@@ -114,4 +114,15 @@ public class ObtenerDatos {
 
         return cliente.postJson(json,"addCalificaciones");
     }
+
+    public String postRequestUser (String username, String pass) throws Exception{
+        JSONObject json=new JSONObject();
+        JSONObject object=new JSONObject();
+
+        json.put("username",username);
+        json.put("password",pass);
+        object.put("usuario","usuario");
+
+        return cliente.postUserJson(json,"requestUser");
+    }
 }

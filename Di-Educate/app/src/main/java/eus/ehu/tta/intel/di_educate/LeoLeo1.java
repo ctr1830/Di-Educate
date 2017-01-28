@@ -24,7 +24,8 @@ public class LeoLeo1 extends AppCompatActivity {
 
     private ArrayList<String> imagenes=null;
     private ArrayList<String> respuesta=null;
-    public final static int EXTRA_USERID= 16;
+    public final static String EXTRA_USERID= "null";
+    private static String USERID= "null";
     private static String boton1;
     private static String boton2;
     private static int fail=0;
@@ -33,6 +34,9 @@ public class LeoLeo1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leo_leo1);
+
+        Intent intent=getIntent();
+        USERID=intent.getStringExtra(EXTRA_USERID);
 
         getRespuestas();
         getImagenes(0);
@@ -205,7 +209,7 @@ public class LeoLeo1 extends AppCompatActivity {
             @Override
             protected Integer work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Integer codigo=data.postInfo(Integer.toString(EXTRA_USERID),Integer.toString(1));
+                Integer codigo=data.postInfo(USERID,Integer.toString(1));
                 return codigo;
             }
 
