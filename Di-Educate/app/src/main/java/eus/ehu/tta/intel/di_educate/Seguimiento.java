@@ -16,9 +16,9 @@ import Data.Resultados;
 
 public class Seguimiento extends AppCompatActivity {
 
-    private String EXTRA_LOGIN= "";
+    private String EXTRA_USERNAME= "";
     private String EXTRA_OPTION= "";
-    public final static int EXTRA_USERID= 16;
+    private  String EXTRA_USERID= "";
     private ArrayList<String> resultados=null;
 
     @Override
@@ -28,8 +28,8 @@ public class Seguimiento extends AppCompatActivity {
 
         Bundle extras=getIntent().getExtras();
         EXTRA_OPTION=extras.getString("opcion");
-        EXTRA_LOGIN=extras.getString("username");
-        //CONSEGUIR USERID
+        EXTRA_USERNAME=extras.getString("username");
+        EXTRA_USERID=extras.getString("userid");
 
         PlayGifView pGif = (PlayGifView) findViewById(R.id.seguimiento);
         pGif.setImageResource(R.drawable.avanza);
@@ -43,7 +43,7 @@ public class Seguimiento extends AppCompatActivity {
             @Override
             protected Resultados work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Resultados resultados= data.getResultados(EXTRA_USERID);
+                Resultados resultados= data.getResultados(Integer.parseInt(EXTRA_USERID));
                 return resultados;
             }
 
@@ -125,7 +125,8 @@ public class Seguimiento extends AppCompatActivity {
 
     public void volver(View v){
         Intent intent= new Intent(this,MenuActivity.class);
-        intent.putExtra(MenuActivity.EXTRA_LOGIN,EXTRA_LOGIN);
+        intent.putExtra(MenuActivity.EXTRA_USERNAME,EXTRA_USERNAME);
+        intent.putExtra(MenuActivity.EXTRA_USERID,EXTRA_USERID);
         startActivity(intent);
     }
 

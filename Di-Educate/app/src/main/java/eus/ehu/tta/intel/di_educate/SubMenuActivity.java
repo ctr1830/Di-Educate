@@ -8,18 +8,22 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 public class SubMenuActivity extends AppCompatActivity {
-    public final static String EXTRA_USERNAME= "login";
-    public final static String EXTRA_OPTION= "leoleo";
-    public static String USERID= "null";
+
+    private static String userid;
+    private static String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_menu);
 
-        Intent intent =getIntent();
-        String opcion=intent.getStringExtra(EXTRA_OPTION);
-        USERID=intent.getStringExtra(USERID);
+        Bundle extras=getIntent().getExtras();
+        String opcion = extras.getString("opcion");
+        username=extras.getString("username");
+        userid=extras.getString("userid");
+
+        System.out.println("USERID SUB: "+userid);
+        System.out.println("USERNAME SUB: "+username);
 
          submenu(opcion);
     }
@@ -97,50 +101,66 @@ public class SubMenuActivity extends AppCompatActivity {
 
     public void leoleo1(View v){
         Intent intent= new Intent(this,LeoLeo1.class);
-        intent.putExtra(LeoLeo1.EXTRA_USERID,USERID);
-        intent.putExtra(LeoLeo1.EXTRA_USERNAME,EXTRA_USERNAME);
+        Bundle extras=new Bundle();
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
     public void leoleo2(View v){
         Intent intent= new Intent(this,LeoLeo2.class);
-        intent.putExtra(LeoLeo2.EXTRA_USERID,USERID);
-        intent.putExtra(LeoLeo2.EXTRA_USERNAME,EXTRA_USERNAME);
+        Bundle extras=new Bundle();
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
     public void leoleo3(View v){
         Intent intent= new Intent(this,LeoLeo3.class);
-        intent.putExtra(LeoLeo3.EXTRA_USERID,USERID);
-        intent.putExtra(LeoLeo3.EXTRA_USERNAME,EXTRA_USERNAME);
+        Bundle extras=new Bundle();
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
     public void juego1(View v){
         Intent intent= new Intent(this,Juego1.class);
-        intent.putExtra(Juego1.EXTRA_USERID,USERID);
-        intent.putExtra(Juego1.EXTRA_USERNAME,EXTRA_USERNAME);
+        Bundle extras=new Bundle();
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
     public void juego2(View v){
         Intent intent= new Intent(this,Juego2.class);
-        intent.putExtra(Juego2.EXTRA_USERID,USERID);
-        intent.putExtra(Juego2.EXTRA_USERNAME,EXTRA_USERNAME);
+        Bundle extras=new Bundle();
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
     public void escucho1(View v){
         Intent intent= new Intent(this,Escucho1.class);
-        intent.putExtra(Escucho1.EXTRA_USERID,USERID);
-        intent.putExtra(Escucho1.EXTRA_USERNAME,EXTRA_USERNAME);
+        Bundle extras=new Bundle();
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
     public void escucho2(View v){
         Intent intent= new Intent(this,Escucho2.class);
-        intent.putExtra(Escucho2.EXTRA_USERID,USERID);
-        intent.putExtra(Escucho2.EXTRA_USERNAME,EXTRA_USERNAME);
+        Bundle extras=new Bundle();
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
     public void escucho3(View v){
         Intent intent= new Intent(this,Pre_Escucho3.class);
-        intent.putExtra(Pre_Escucho3.EXTRA_USERID,USERID);
-        intent.putExtra(Pre_Escucho3.EXTRA_USERNAME,EXTRA_USERNAME);
+        Bundle extras=new Bundle();
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
 
@@ -148,7 +168,8 @@ public class SubMenuActivity extends AppCompatActivity {
         Intent intent= new Intent(this,Seguimiento.class);
         Bundle bundle=new Bundle();
         bundle.putString("opcion","leoleo");
-        bundle.putString("username",EXTRA_USERNAME);
+        bundle.putString("username",username);
+        bundle.putString("userid",userid);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -156,7 +177,8 @@ public class SubMenuActivity extends AppCompatActivity {
         Intent intent= new Intent(this,Seguimiento.class);
         Bundle bundle=new Bundle();
         bundle.putString("opcion","juego");
-        bundle.putString("username",EXTRA_USERNAME);
+        bundle.putString("username",username);
+        bundle.putString("userid",userid);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -164,7 +186,8 @@ public class SubMenuActivity extends AppCompatActivity {
         Intent intent= new Intent(this,Seguimiento.class);
         Bundle bundle=new Bundle();
         bundle.putString("opcion","escucho");
-        bundle.putString("username",EXTRA_USERNAME);
+        bundle.putString("username",username);
+        bundle.putString("userid",userid);
         intent.putExtras(bundle);
         startActivity(intent);
     }

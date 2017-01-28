@@ -19,8 +19,6 @@ import Data.Respuestas;
 
 public class Escucho2 extends AppCompatActivity {
 
-    public final static String EXTRA_USERID= "null";
-    public final static String EXTRA_USERNAME= "null";
     private static String name;
     private static String USERID="null";
     private static int fail=0;
@@ -33,9 +31,9 @@ public class Escucho2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escucho2);
 
-        Intent intent=getIntent();
-        USERID=intent.getStringExtra(EXTRA_USERID);
-        name=intent.getStringExtra(EXTRA_USERNAME);
+        Bundle extras=getIntent().getExtras();
+        name=extras.getString("username");
+        USERID=extras.getString("userid");
 
         getRespuesta();
         getAudio();

@@ -24,10 +24,8 @@ public class LeoLeo1 extends AppCompatActivity {
 
     private ArrayList<String> imagenes=null;
     private ArrayList<String> respuesta=null;
-    public final static String EXTRA_USERID= "null";
-    public final static String EXTRA_USERNAME= "null";
     private static String name;
-    private static String USERID= "null";
+    private static String userid= "null";
     private static String boton1;
     private static String boton2;
     private static int fail=0;
@@ -37,9 +35,9 @@ public class LeoLeo1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leo_leo1);
 
-        Intent intent=getIntent();
-        USERID=intent.getStringExtra(EXTRA_USERID);
-        name=intent.getStringExtra(EXTRA_USERNAME);
+        Bundle extras=getIntent().getExtras();
+        name=extras.getString("username");
+        userid=extras.getString("userid");
 
         getRespuestas();
         getImagenes(0);
@@ -212,7 +210,7 @@ public class LeoLeo1 extends AppCompatActivity {
             @Override
             protected Integer work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Integer codigo=data.postInfo(USERID,Integer.toString(1));
+                Integer codigo=data.postInfo(userid,Integer.toString(1));
                 return codigo;
             }
 
@@ -247,7 +245,7 @@ public class LeoLeo1 extends AppCompatActivity {
         Bundle extras=new Bundle();
         extras.putString("opcion","leoleo");
         extras.putString("true","correcto");
-        extras.putString("userid",USERID);
+        extras.putString("userid",userid);
         extras.putString("username",name);
         intent.putExtras(extras);
         startActivity(intent);

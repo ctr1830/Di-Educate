@@ -9,6 +9,8 @@ import android.view.View;
 
 public class CorrectoActivity extends AppCompatActivity {
 
+    private static String username;
+    private static String userid;
     private static String opcion;
     private static String correcto;
     private static  MediaPlayer ayuda;
@@ -22,9 +24,12 @@ public class CorrectoActivity extends AppCompatActivity {
         Bundle extras=getIntent().getExtras();
 
         opcion = extras.getString("opcion");
-        Log.d("opcion",opcion);
         correcto = extras.getString("true");
-        Log.d("true/false",correcto);
+        username=extras.getString("username");
+        userid=extras.getString("userid");
+
+        System.out.println("USERID: "+userid);
+        System.out.println("USERNAME: "+username);
 
         if (correcto.equals("correcto")) {
             findViewById(R.id.volvercorrecto).setVisibility(View.VISIBLE);
@@ -57,8 +62,11 @@ public class CorrectoActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent(this, MenuActivity.class);
+        intent.putExtra(MenuActivity.EXTRA_USERNAME,username);
+        intent.putExtra(MenuActivity.EXTRA_USERID,userid);
         startActivity(intent);
 
+        /*
         if(opcion.equals("leoleo")) {
             Intent mainIntent1 = new Intent(this, SubMenuActivity.class);
             mainIntent1.putExtra(SubMenuActivity.EXTRA_OPTION, "leoleo");
@@ -74,6 +82,7 @@ public class CorrectoActivity extends AppCompatActivity {
             mainIntent3.putExtra(SubMenuActivity.EXTRA_OPTION, "escucho");
             startActivity(mainIntent3);
         }
+        */
     }
 
 }

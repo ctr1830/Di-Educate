@@ -18,10 +18,8 @@ import Data.Respuestas;
 
 public class LeoLeo2 extends AppCompatActivity {
 
-    public final static String EXTRA_USERID= "null";
-    public final static String EXTRA_USERNAME= "null";
     private static String name;
-    private static String USERID= "null";
+    private static String userid= "null";
     private static String boton;
     private static int fail=0;
     private static int stage=0;
@@ -36,9 +34,10 @@ public class LeoLeo2 extends AppCompatActivity {
         getRespuestas();
         getAudio();
 
-        Intent intent=getIntent();
-        USERID=intent.getStringExtra(EXTRA_USERID);
-        name=intent.getStringExtra(EXTRA_USERNAME);
+        Bundle extras=getIntent().getExtras();
+        name=extras.getString("username");
+        userid=extras.getString("userid");
+
         Button button1=(Button)this.findViewById(R.id.bl21);
         button1.setText("melon");
         Button button2=(Button)this.findViewById(R.id.bl22);
@@ -180,7 +179,7 @@ public class LeoLeo2 extends AppCompatActivity {
             @Override
             protected Integer work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Integer codigo=data.postInfo(USERID,Integer.toString(2));
+                Integer codigo=data.postInfo(userid,Integer.toString(2));
                 return codigo;
             }
 
@@ -216,7 +215,7 @@ public class LeoLeo2 extends AppCompatActivity {
         extras.putString("opcion","leoleo");
         extras.putString("true","correcto");
         extras.putString("username",name);
-        extras.putString("userid",USERID);
+        extras.putString("userid",userid);
         intent.putExtras(extras);
         startActivity(intent);
     }

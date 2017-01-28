@@ -74,7 +74,7 @@ public class Login extends AppCompatActivity {
 
     public void menuActivity(String userid){
         Intent intent= new Intent(this,MenuActivity.class);
-        intent.putExtra(MenuActivity.EXTRA_LOGIN,username);
+        intent.putExtra(MenuActivity.EXTRA_USERNAME,username);
         intent.putExtra(MenuActivity.EXTRA_USERID,userid);
         startActivity(intent);
     }

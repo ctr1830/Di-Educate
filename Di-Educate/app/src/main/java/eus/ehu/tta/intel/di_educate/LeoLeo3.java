@@ -20,8 +20,6 @@ public class LeoLeo3 extends AppCompatActivity {
     private static String boton;
     private static int fail=0;
     private ArrayList<String> respuestas=null;
-    public final static String EXTRA_USERID= "null";
-    public final static String EXTRA_USERNAME= "null";
     private static String name;
     private static String USERID= "null";
     private static ArrayList<String> array = new ArrayList<String>();
@@ -34,9 +32,10 @@ public class LeoLeo3 extends AppCompatActivity {
         getEnunciado();
         getRespuestas();
 
-        Intent intent=getIntent();
-        USERID=intent.getStringExtra(EXTRA_USERID);
-        name=intent.getStringExtra(EXTRA_USERNAME);
+        Bundle extras=getIntent().getExtras();
+        name=extras.getString("username");
+        USERID=extras.getString("userid");
+
         Button button1=(Button)this.findViewById(R.id.bl31);
         button1.setText("tomate");
         Button button2=(Button)this.findViewById(R.id.bl32);

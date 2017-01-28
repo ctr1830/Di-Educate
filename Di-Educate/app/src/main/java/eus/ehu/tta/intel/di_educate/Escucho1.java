@@ -18,14 +18,11 @@ import Data.Respuestas;
 
 public class Escucho1 extends AppCompatActivity {
 
-    public final static String EXTRA_LOGIN= "login";
-    public final static String EXTRA_USERNAME= "null";
     private static String name;
     private static String USERID="null";
     private static String boton;
     private static int stage=0;
     private static int fail=0;
-    public final static String EXTRA_USERID= "null";
     private ArrayList<String> audio=null;
     private ArrayList<String> respuesta=null;
 
@@ -34,9 +31,9 @@ public class Escucho1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escucho1);
 
-        Intent intent=getIntent();
-        USERID=intent.getStringExtra(EXTRA_USERID);
-        name=intent.getStringExtra(EXTRA_USERNAME);
+        Bundle extras=getIntent().getExtras();
+        name=extras.getString("username");
+        USERID=extras.getString("userid");
 
         getRespuestas();
         getAudio();
@@ -203,7 +200,6 @@ public class Escucho1 extends AppCompatActivity {
     public void correcto(){
         Intent intent= new Intent(this,CorrectoActivity.class);
         Bundle extras=new Bundle();
-        extras.putString("username",EXTRA_LOGIN);
         extras.putString("opcion","escucho");
         extras.putString("true","correcto");
         extras.putString("username",name);

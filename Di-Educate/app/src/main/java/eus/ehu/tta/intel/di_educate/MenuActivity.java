@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MenuActivity extends AppCompatActivity {
-    public final static String EXTRA_LOGIN= "login";
+    public final static String EXTRA_USERNAME= "login";
     public static String EXTRA_USERID= "userid";
     private static String username;
     private static String userid;
@@ -18,33 +18,40 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Intent intent =getIntent();
-        username=intent.getStringExtra(EXTRA_LOGIN);
+        username=intent.getStringExtra(EXTRA_USERNAME);
         userid=intent.getStringExtra(EXTRA_USERID);
         TextView textLogin=(TextView)findViewById(R.id.bienvenida);
         textLogin.setText("Bienvenido ".concat(username));
 
-        System.out.println("USERID "+userid);
+        System.out.println("USERID: "+userid);
+        System.out.println("USERNAME: "+username);
     }
 
     public void leoleo(View v){
         Intent intent= new Intent(this,SubMenuActivity.class);
-        intent.putExtra(SubMenuActivity.EXTRA_USERNAME,EXTRA_LOGIN);
-        intent.putExtra(SubMenuActivity.EXTRA_OPTION,"leoleo");
-        intent.putExtra(SubMenuActivity.USERID,EXTRA_USERID);
+        Bundle extras=new Bundle();
+        extras.putString("opcion","leoleo");
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
     public void juego(View v){
         Intent intent= new Intent(this,SubMenuActivity.class);
-        intent.putExtra(SubMenuActivity.EXTRA_USERNAME,EXTRA_LOGIN);
-        intent.putExtra(SubMenuActivity.EXTRA_OPTION,"juego");
-        intent.putExtra(SubMenuActivity.USERID,EXTRA_USERID);
+        Bundle extras=new Bundle();
+        extras.putString("opcion","juego");
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
     public void escucho(View v){
         Intent intent= new Intent(this,SubMenuActivity.class);
-        intent.putExtra(SubMenuActivity.EXTRA_USERNAME,EXTRA_LOGIN);
-        intent.putExtra(SubMenuActivity.EXTRA_OPTION,"escucho");
-        intent.putExtra(SubMenuActivity.USERID,EXTRA_USERID);
+        Bundle extras=new Bundle();
+        extras.putString("opcion","escucho");
+        extras.putString("userid",userid);
+        extras.putString("username",username);
+        intent.putExtras(extras);
         startActivity(intent);
     }
 }

@@ -17,8 +17,6 @@ import Data.Respuestas;
 
 public class Juego1 extends AppCompatActivity {
 
-    public final static String EXTRA_USERID= "null";
-    public final static String EXTRA_USERNAME= "null";
     private static String name;
     private static String USERID= "null";
     private static String boton;
@@ -30,9 +28,9 @@ public class Juego1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego1);
 
-        Intent intent=getIntent();
-        USERID=intent.getStringExtra(EXTRA_USERID);
-        name=intent.getStringExtra(EXTRA_USERNAME);
+        Bundle extras=getIntent().getExtras();
+        name=extras.getString("username");
+        USERID=extras.getString("userid");
 
         getRespuestas();
 
