@@ -25,11 +25,6 @@ public class PlayGifView extends View{
     @SuppressLint("NewApi")
     public PlayGifView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
-        /**
-         * Starting from HONEYCOMB have to turn off HardWare acceleration to draw
-         * Movie on Canvas.
-         */
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
