@@ -1,7 +1,6 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +8,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import Business.Communication;
-import Business.ObtenerDatos;
-import Data.Respuestas;
-import Data.Resultados;
+import modelo.Communication;
+import modelo.ObtenerDatos;
+import modelo.Resultados;
+import eus.ehu.tta.intel.di_educate.R;
 
 public class Seguimiento extends AppCompatActivity {
 

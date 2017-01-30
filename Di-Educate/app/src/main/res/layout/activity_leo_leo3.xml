@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="eus.ehu.tta.intel.di_educate.LeoLeo3">
+    tools:context="eus.ehu.tta.intel.di_educate.Vista.LeoLeo3">
 
     <TextView
         android:layout_width="wrap_content"

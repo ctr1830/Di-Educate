@@ -1,4 +1,4 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,10 +15,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import Business.Communication;
-import Business.ObtenerDatos;
-import Data.Imagenes;
-import Data.Respuestas;
+import modelo.Communication;
+import modelo.ObtenerDatos;
+import modelo.Imagenes;
+import modelo.Respuestas;
+import eus.ehu.tta.intel.di_educate.R;
 
 public class LeoLeo1 extends AppCompatActivity {
 
@@ -197,6 +198,8 @@ public class LeoLeo1 extends AppCompatActivity {
                  Bundle extras=new Bundle();
                  extras.putString("opcion","leoleo");
                  extras.putString("true","incorrecto");
+                 extras.putString("username",name);
+                 extras.putString("userid",userid);
                  intent.putExtras(extras);
                  startActivity(intent);
 

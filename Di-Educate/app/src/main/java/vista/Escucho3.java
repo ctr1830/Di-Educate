@@ -1,4 +1,4 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,18 +10,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import Business.Communication;
-import Business.ObtenerDatos;
-import Data.Audio;
-import Data.Enunciado;
-import Data.Imagenes;
-import Data.Respuestas;
+import modelo.Communication;
+import modelo.ObtenerDatos;
+import modelo.Imagenes;
+import modelo.Respuestas;
+import eus.ehu.tta.intel.di_educate.R;
 
 public class Escucho3 extends AppCompatActivity {
 
@@ -261,6 +259,8 @@ public class Escucho3 extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("opcion", "escucho");
                 extras.putString("true", "incorrecto");
+                extras.putString("username",name);
+                extras.putString("userid",USERID);
                 intent.putExtras(extras);
                 startActivity(intent);
             }

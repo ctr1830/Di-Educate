@@ -1,10 +1,12 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import eus.ehu.tta.intel.di_educate.R;
 
 public class MenuActivity extends AppCompatActivity {
     public final static String EXTRA_USERNAME= "login";

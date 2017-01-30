@@ -17,43 +17,43 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen">
+        <activity android:name="vista.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name="vista.MainActivity" />
         <activity
-            android:name=".Login"
+            android:name="vista.Login"
             android:label="@string/alogin" />
         <activity
-            android:name=".NewAccount"
+            android:name="vista.NewAccount"
             android:label="@string/anewaccount" />
         <activity
-            android:name=".MenuActivity"
+            android:name="vista.MenuActivity"
             android:label="@string/amenu" />
-        <activity android:name=".SubMenuActivity" />
+        <activity android:name="vista.SubMenuActivity" />
         <activity
-            android:name=".LeoLeo1"
+            android:name="vista.LeoLeo1"
             android:label="@string/bleoleo1" />
         <activity
-            android:name=".LeoLeo2"
+            android:name="vista.LeoLeo2"
             android:label="@string/bleoleo2" />
         <activity
-            android:name=".LeoLeo3"
+            android:name="vista.LeoLeo3"
             android:label="@string/bleoleo3" />
         <activity
-            android:name=".CorrectoActivity"
+            android:name="vista.CorrectoActivity"
             android:label="@string/app_name" />
-        <activity android:name=".Juego1" />
-        <activity android:name=".Juego2" />
-        <activity android:name=".Escucho1" />
-        <activity android:name=".Escucho2" />
-        <activity android:name=".Escucho3" />
-        <activity android:name=".Pre_Escucho3" />
-        <activity android:name=".Seguimiento"></activity>
+        <activity android:name="vista.Juego1" />
+        <activity android:name="vista.Juego2" />
+        <activity android:name="vista.Escucho1" />
+        <activity android:name="vista.Escucho2" />
+        <activity android:name="vista.Escucho3" />
+        <activity android:name="vista.Pre_Escucho3" />
+        <activity android:name="vista.Seguimiento"></activity>
     </application>
 
 </manifest>

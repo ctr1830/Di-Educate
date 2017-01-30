@@ -1,21 +1,7 @@
-package Business;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+package modelo;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import Data.Audio;
-import Data.Enunciado;
-import Data.Imagenes;
-import Data.Respuestas;
-import Data.Resultados;
 
 /**
  * Created by cristian on 14/01/17.

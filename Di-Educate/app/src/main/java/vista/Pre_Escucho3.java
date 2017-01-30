@@ -1,4 +1,4 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -10,10 +10,11 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import Business.Communication;
-import Business.ObtenerDatos;
-import Data.Audio;
-import Data.Enunciado;
+import modelo.Communication;
+import modelo.ObtenerDatos;
+import modelo.Audio;
+import modelo.Enunciado;
+import eus.ehu.tta.intel.di_educate.R;
 
 public class Pre_Escucho3 extends AppCompatActivity {
     private ArrayList<String> audio=null;

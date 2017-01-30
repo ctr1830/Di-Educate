@@ -1,14 +1,11 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,8 +15,9 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 
-import Business.Communication;
-import Business.ObtenerDatos;
+import modelo.Communication;
+import modelo.ObtenerDatos;
+import eus.ehu.tta.intel.di_educate.R;
 
 public class NewAccount extends AppCompatActivity {
     public final static int PICTURE_REQUEST_CODE=1;

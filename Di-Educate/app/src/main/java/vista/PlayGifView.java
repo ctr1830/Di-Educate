@@ -1,4 +1,4 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 /**
  * Created by cristian on 3/01/17.

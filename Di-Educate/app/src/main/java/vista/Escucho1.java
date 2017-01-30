@@ -1,4 +1,4 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -7,42 +7,42 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-import Business.Communication;
-import Business.ObtenerDatos;
-import Data.Respuestas;
+import modelo.Communication;
+import modelo.ObtenerDatos;
+import modelo.Audio;
+import modelo.Respuestas;
+import eus.ehu.tta.intel.di_educate.R;
 
-public class Juego1 extends AppCompatActivity {
+public class Escucho1 extends AppCompatActivity {
 
     private static String name;
-    private static String USERID= "null";
+    private static String USERID="null";
     private static String boton;
+    private static int stage=0;
     private static int fail=0;
-    private ArrayList<String> respuestas=null;
+    private ArrayList<String> audio=null;
+    private ArrayList<String> respuesta=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_juego1);
+        setContentView(R.layout.activity_escucho1);
 
         Bundle extras=getIntent().getExtras();
         name=extras.getString("username");
         USERID=extras.getString("userid");
 
         getRespuestas();
+        getAudio();
 
-        Button button1=(Button)this.findViewById(R.id.bj11);
-        button1.setText("bo");
-        Button button2=(Button)this.findViewById(R.id.bj12);
-        button2.setText("go");
-        Button button3=(Button)this.findViewById(R.id.bj13);
-        button3.setText("do");
-        TextView texto=(TextView)findViewById(R.id.pal);
-        texto.setText("Fri__rífico");
-
+        Button button1=(Button)this.findViewById(R.id.be11);
+        button1.setText("palo");
+        Button button2=(Button)this.findViewById(R.id.be12);
+        button2.setText("pato");
     }
 
     public void getRespuestas(){
@@ -50,13 +50,29 @@ public class Juego1 extends AppCompatActivity {
             @Override
             protected Respuestas work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Respuestas respuesta= data.getRespuestas(4);
+                Respuestas respuesta= data.getRespuestas(6);
                 return respuesta;
             }
 
             @Override
             protected void onFinish(Respuestas result) {
-                respuestas=result.getRespuestas();
+                respuesta=result.getRespuestas();
+            }
+        }.execute();
+    }
+
+    public void getAudio(){
+        new Communication<Audio>(this){
+            @Override
+            protected Audio work() throws Exception{
+                ObtenerDatos data = new ObtenerDatos();
+                Audio url= data.getAudio(6);
+                return url;
+            }
+
+            @Override
+            protected void onFinish(Audio result) {
+                audio=result.getAudios();
             }
         }.execute();
     }
@@ -66,39 +82,58 @@ public class Juego1 extends AppCompatActivity {
         boton=arg0.getText().toString();
         Log.d("boton",boton);
     }
+    public void audio(View v) throws IOException{
+        MediaPlayer media= new MediaPlayer();
 
-    public void comprobar(View v){
+        if(stage==0){
+            media.setDataSource(audio.get(0));
+        }else if(stage==1){
+            media.setDataSource(audio.get(1));
+        }else if (stage==2){
+            media.setDataSource(audio.get(2));
+        }
 
-        Button button1=(Button)this.findViewById(R.id.bj11);
-        Button button2=(Button)this.findViewById(R.id.bj12);
-        Button button3=(Button)this.findViewById(R.id.bj13);
-        TextView texto=(TextView)findViewById(R.id.pal);
+        media.prepare();
+        media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.stop();
+                mp.release();
+            }
+        });
+        media.start();
+    }
+    public void comprobar (View v){
+        Log.d("correcta",respuesta.get(0));
+        Button button1=(Button)this.findViewById(R.id.be11);
+        Button button2=(Button)this.findViewById(R.id.be12);
 
         if(boton==null) {
             boton = "";
         }
 
-        if(boton.equals(respuestas.get(0))){
+        if(boton.equals(respuesta.get(0))){
             fail=0;
             boton=null;
+            stage=1;
+            //Cambiar audio
+
             //inicializar botones
-            button1.setText("bu");
-            button2.setText("gu");
-            button3.setText("du");
-            texto.setText("A__elo");
+            button1.setText("capucha");
+            button2.setText("babucha");
         }
 
-        else if(boton.equals(respuestas.get(1))){
+        else if(boton.equals(respuesta.get(1))){
             fail=0;
             boton=null;
-            //inicializar botones
-            button1.setText("go");
-            button2.setText("po");
-            button3.setText("lo");
-            texto.setText("Pe__ta");
+            stage=2;
+            //Cambiar audio
 
+            //inicializar botones
+            button1.setText("coche");
+            button2.setText("noche");
         }
-        else if(boton.equals(respuestas.get(2))){
+        else if(boton.equals(respuesta.get(2))){
             fail=0;
             boton=null;
             conseguido();
@@ -114,13 +149,17 @@ public class Juego1 extends AppCompatActivity {
                 }
             });
             media.start();
+            //Log.d("AQUI","ENTRE");
+            //Log.d("FAIL",Integer.toString(fail));
             if(fail==3) {
                 fail=0;
                 Log.d("AQUI", "ENTRE tb");
                 Intent intent = new Intent(this, CorrectoActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("opcion", "juego");
+                extras.putString("opcion", "escucho");
                 extras.putString("true", "incorrecto");
+                extras.putString("username",name);
+                extras.putString("userid",USERID);
                 intent.putExtras(extras);
                 startActivity(intent);
             }
@@ -131,7 +170,7 @@ public class Juego1 extends AppCompatActivity {
             @Override
             protected Integer work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Integer codigo=data.postInfo(USERID,Integer.toString(4));
+                Integer codigo=data.postInfo(USERID ,Integer.toString(6));
                 return codigo;
             }
 
@@ -164,7 +203,7 @@ public class Juego1 extends AppCompatActivity {
     public void correcto(){
         Intent intent= new Intent(this,CorrectoActivity.class);
         Bundle extras=new Bundle();
-        extras.putString("opcion","juego");
+        extras.putString("opcion","escucho");
         extras.putString("true","correcto");
         extras.putString("username",name);
         extras.putString("userid",USERID);

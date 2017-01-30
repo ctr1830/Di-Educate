@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/fondo"
-    tools:context="eus.ehu.tta.intel.di_educate.MenuActivity">
+    tools:context="eus.ehu.tta.intel.di_educate.Vista.MenuActivity">
 
     <Button
         android:text="@string/bleoleo"

@@ -1,4 +1,4 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -11,10 +11,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import Business.Communication;
-import Business.ObtenerDatos;
-import Data.Enunciado;
-import Data.Respuestas;
+import modelo.Communication;
+import modelo.ObtenerDatos;
+import modelo.Enunciado;
+import modelo.Respuestas;
+import eus.ehu.tta.intel.di_educate.R;
 
 public class LeoLeo3 extends AppCompatActivity {
     private static String boton;
@@ -156,6 +157,8 @@ public class LeoLeo3 extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("opcion", "leoleo");
                 extras.putString("true", "incorrecto");
+                extras.putString("username",name);
+                extras.putString("userid",USERID);
                 intent.putExtras(extras);
                 startActivity(intent);
             }

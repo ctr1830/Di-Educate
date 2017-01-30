@@ -1,4 +1,4 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import eus.ehu.tta.intel.di_educate.R;
 
 public class SubMenuActivity extends AppCompatActivity {
 

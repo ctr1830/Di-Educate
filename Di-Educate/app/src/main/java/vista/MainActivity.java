@@ -1,9 +1,11 @@
-package eus.ehu.tta.intel.di_educate;
+package vista;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import eus.ehu.tta.intel.di_educate.R;
 
 public class MainActivity extends AppCompatActivity {
 

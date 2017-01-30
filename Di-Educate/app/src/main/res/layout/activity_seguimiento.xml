@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="eus.ehu.tta.intel.di_educate.Seguimiento"
+    tools:context="eus.ehu.tta.intel.di_educate.Vista.Seguimiento"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 <LinearLayout
@@ -14,7 +14,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:layout_height="match_parent">
 
-    <eus.ehu.tta.intel.di_educate.PlayGifView
+    <vista.PlayGifView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
