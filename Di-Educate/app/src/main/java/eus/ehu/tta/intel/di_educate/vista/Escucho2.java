@@ -1,4 +1,4 @@
-package vista;
+package eus.ehu.tta.intel.di_educate.vista;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -6,51 +6,50 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import modelo.Communication;
-import modelo.ObtenerDatos;
-import modelo.Audio;
-import modelo.Respuestas;
+import eus.ehu.tta.intel.di_educate.modelo.Communication;
+import eus.ehu.tta.intel.di_educate.modelo.ObtenerDatos;
+import eus.ehu.tta.intel.di_educate.modelo.Audio;
+import eus.ehu.tta.intel.di_educate.modelo.Respuestas;
 import eus.ehu.tta.intel.di_educate.R;
 
-public class Escucho1 extends AppCompatActivity {
+public class Escucho2 extends AppCompatActivity {
 
     private static String name;
     private static String USERID="null";
-    private static String boton;
-    private static int stage=0;
     private static int fail=0;
+    private static int stage=0;
     private ArrayList<String> audio=null;
     private ArrayList<String> respuesta=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_escucho1);
+        setContentView(R.layout.activity_escucho2);
 
         Bundle extras=getIntent().getExtras();
         name=extras.getString("username");
         USERID=extras.getString("userid");
 
-        getRespuestas();
+        getRespuesta();
         getAudio();
 
-        Button button1=(Button)this.findViewById(R.id.be11);
-        button1.setText("palo");
-        Button button2=(Button)this.findViewById(R.id.be12);
-        button2.setText("pato");
+        //reproduccion audio
+        TextView enun=(TextView)findViewById(R.id.e_enunciado);
+        enun.setText("Pablito clavo un clavito. ¿Qué __________ clavo Pablito?");
     }
 
-    public void getRespuestas(){
+    public void getRespuesta(){
         new Communication<Respuestas>(this){
             @Override
             protected Respuestas work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Respuestas respuesta= data.getRespuestas(6);
+                Respuestas respuesta= data.getRespuestas(7);
                 return respuesta;
             }
 
@@ -66,7 +65,7 @@ public class Escucho1 extends AppCompatActivity {
             @Override
             protected Audio work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Audio url= data.getAudio(6);
+                Audio url= data.getAudio(7);
                 return url;
             }
 
@@ -77,11 +76,6 @@ public class Escucho1 extends AppCompatActivity {
         }.execute();
     }
 
-    public void respuesta(View v){
-        Button arg0 = (Button) v;
-        boton=arg0.getText().toString();
-        Log.d("boton",boton);
-    }
     public void audio(View v) throws IOException{
         MediaPlayer media= new MediaPlayer();
 
@@ -103,39 +97,25 @@ public class Escucho1 extends AppCompatActivity {
         });
         media.start();
     }
-    public void comprobar (View v){
-        Log.d("correcta",respuesta.get(0));
-        Button button1=(Button)this.findViewById(R.id.be11);
-        Button button2=(Button)this.findViewById(R.id.be12);
 
-        if(boton==null) {
-            boton = "";
-        }
+    public void comprobar(View v){
+        EditText texto=(EditText)findViewById(R.id.texto);
+        TextView enun=(TextView)findViewById(R.id.e_enunciado);
 
-        if(boton.equals(respuesta.get(0))){
+        if(texto.getText().toString().equals(respuesta.get(0))) {
             fail=0;
-            boton=null;
             stage=1;
-            //Cambiar audio
-
-            //inicializar botones
-            button1.setText("capucha");
-            button2.setText("babucha");
+            enun.setText("Tres tristes __________ trigaban trigo en un trigal");
+            texto.setText("");
         }
-
-        else if(boton.equals(respuesta.get(1))){
+        else if (texto.getText().toString().equals(respuesta.get(1))){
             fail=0;
-            boton=null;
             stage=2;
-            //Cambiar audio
-
-            //inicializar botones
-            button1.setText("coche");
-            button2.setText("noche");
+            enun.setText("El cielo esta enladrillado. ¿Quién lo desenladrillará? El _____________ que lo desenladrille, buen desenladrillador será");
+            texto.setText("");
         }
-        else if(boton.equals(respuesta.get(2))){
+        else if (texto.getText().toString().equals(respuesta.get(2))){
             fail=0;
-            boton=null;
             conseguido();
         }
         else{
@@ -149,8 +129,6 @@ public class Escucho1 extends AppCompatActivity {
                 }
             });
             media.start();
-            //Log.d("AQUI","ENTRE");
-            //Log.d("FAIL",Integer.toString(fail));
             if(fail==3) {
                 fail=0;
                 Log.d("AQUI", "ENTRE tb");
@@ -164,13 +142,14 @@ public class Escucho1 extends AppCompatActivity {
                 startActivity(intent);
             }
         }
+
     }
     public void conseguido(){
         new Communication<Integer>(this){
             @Override
             protected Integer work() throws Exception{
                 ObtenerDatos data = new ObtenerDatos();
-                Integer codigo=data.postInfo(USERID ,Integer.toString(6));
+                Integer codigo=data.postInfo(USERID,Integer.toString(7));
                 return codigo;
             }
 
@@ -200,11 +179,11 @@ public class Escucho1 extends AppCompatActivity {
         }.execute();
     }
 
-    public void correcto(){
-        Intent intent= new Intent(this,CorrectoActivity.class);
-        Bundle extras=new Bundle();
-        extras.putString("opcion","escucho");
-        extras.putString("true","correcto");
+    public void correcto() {
+        Intent intent = new Intent(this, CorrectoActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("opcion", "escucho");
+        extras.putString("true", "correcto");
         extras.putString("username",name);
         extras.putString("userid",USERID);
         intent.putExtras(extras);

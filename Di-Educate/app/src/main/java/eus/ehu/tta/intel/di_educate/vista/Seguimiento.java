@@ -1,4 +1,4 @@
-package vista;
+package eus.ehu.tta.intel.di_educate.vista;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import modelo.Communication;
-import modelo.ObtenerDatos;
-import modelo.Resultados;
+import eus.ehu.tta.intel.di_educate.modelo.Communication;
+import eus.ehu.tta.intel.di_educate.modelo.ObtenerDatos;
+import eus.ehu.tta.intel.di_educate.modelo.Resultados;
 import eus.ehu.tta.intel.di_educate.R;
 
 public class Seguimiento extends AppCompatActivity {

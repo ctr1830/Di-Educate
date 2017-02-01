@@ -1,4 +1,4 @@
-package vista;
+package eus.ehu.tta.intel.di_educate.vista;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,8 +15,8 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 
-import modelo.Communication;
-import modelo.ObtenerDatos;
+import eus.ehu.tta.intel.di_educate.modelo.Communication;
+import eus.ehu.tta.intel.di_educate.modelo.ObtenerDatos;
 import eus.ehu.tta.intel.di_educate.R;
 
 public class NewAccount extends AppCompatActivity {

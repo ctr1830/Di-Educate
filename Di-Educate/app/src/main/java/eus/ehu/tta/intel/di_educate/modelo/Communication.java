@@ -1,4 +1,4 @@
-package modelo;
+package eus.ehu.tta.intel.di_educate.modelo;
 
 import android.app.ProgressDialog;
 import android.content.Context;

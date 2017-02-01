@@ -1,4 +1,4 @@
-package vista;
+package eus.ehu.tta.intel.di_educate.vista;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,10 +15,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import modelo.Communication;
-import modelo.ObtenerDatos;
-import modelo.Imagenes;
-import modelo.Respuestas;
+import eus.ehu.tta.intel.di_educate.modelo.Communication;
+import eus.ehu.tta.intel.di_educate.modelo.ObtenerDatos;
+import eus.ehu.tta.intel.di_educate.modelo.Imagenes;
+import eus.ehu.tta.intel.di_educate.modelo.Respuestas;
 import eus.ehu.tta.intel.di_educate.R;
 
 public class Escucho3 extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package modelo;
+package eus.ehu.tta.intel.di_educate.modelo;
 
 import java.util.ArrayList;
 

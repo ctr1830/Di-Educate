@@ -14,7 +14,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:layout_height="match_parent">
 
-    <vista.PlayGifView
+    <eus.ehu.tta.intel.di_educate.vista.PlayGifView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
